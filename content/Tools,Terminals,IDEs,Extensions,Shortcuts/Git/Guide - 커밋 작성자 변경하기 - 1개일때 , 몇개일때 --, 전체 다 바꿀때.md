@@ -1,0 +1,56 @@
+이런일 안일어나게 자리 바뀌면
+- git config --global user.name 이름
+- git config --global user.email 이메일
+진작에 좀 하십시오.
+
+##### 수정 도중 귀찮아져서 rebase 자체를 모두 취소하기
+``` java
+git rebase --abort
+```
+
+#### 1개만 수정할 떄
+1. 해당 로컬 폴더 staged된 것들 add commit push
+2. git rebase -i --root
+	- 전체 히스토리 리베이스를 검색해서 vi로 보여줌.
+3. 목록에서 잘못된 것들을 pick에서 edit으로 변경
+	- 다 바꾸려면 
+		콜론 누르고  `%s/pick/edit/g`를 입력 후 엔터
+4. :qw!
+5. git commit --amend --author="이름 \<이메일@example.com\>" --no-edit
+6. git rebase --continue
+	- 리베이스 계속 진행
+
+
+#### 몇개만 수정할 때
+1.  해당 로컬 폴더 staged된 것들 add commit push
+2. git commit --amend --author="이름 \<이메일@example.com\>" --no-edit
+
+
+
+#### 모두 수정할때 (스크립트)
+0. `filter-branch`는 히스토리를 대대적으로 재작성하므로, 작업 전 현재 폴더를 통째로 복사해두거나 별도의 브랜치를 만들어 테스트해보는 것이 안전합니다.
+
+1. 
+```java
+git filter-branch --env-filter '
+OLD_EMAIL="잘못된이메일@example.com"
+CORRECT_NAME="내이름"
+CORRECT_EMAIL="내실제이메일@example.com"
+
+if [ "$GIT_COMMITTER_EMAIL" = "$OLD_EMAIL" ]
+then
+    export GIT_COMMITTER_NAME="$CORRECT_NAME"
+    export GIT_COMMITTER_EMAIL="$CORRECT_EMAIL"
+fi
+if [ "$GIT_AUTHOR_EMAIL" = "$OLD_EMAIL" ]
+then
+    export GIT_AUTHOR_NAME="$CORRECT_NAME"
+    export GIT_AUTHOR_EMAIL="$CORRECT_EMAIL"
+fi
+' --tag-name-filter cat -- --branches --tags
+```
+2. git log
+	- 바뀐 것 확인 필수
+	
+3. git push origin --force --all
+	- 강제 푸시
