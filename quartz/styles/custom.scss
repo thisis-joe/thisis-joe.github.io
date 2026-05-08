@@ -405,3 +405,123 @@ article {
     max-width: 100%;
   }
 }
+
+
+/* ==============================
+   다크모드 색상 보정
+   ============================== */
+
+/*
+   기존 custom.scss에서 body 배경을 라이트 색으로 고정했기 때문에
+   다크모드에서는 별도 배경/글자색을 강제로 보정함.
+*/
+[saved-theme="dark"] body {
+  background: #111315;
+  color: #e7e7e7;
+}
+
+[saved-theme="dark"] .page,
+[saved-theme="dark"] .center,
+[saved-theme="dark"] article {
+  background: transparent;
+  color: #e7e7e7;
+}
+
+/* 제목 */
+[saved-theme="dark"] h1,
+[saved-theme="dark"] h2,
+[saved-theme="dark"] h3,
+[saved-theme="dark"] h4,
+[saved-theme="dark"] .article-title,
+[saved-theme="dark"] .page-title a {
+  color: #f2f2f2;
+}
+
+/* 메타 정보 */
+[saved-theme="dark"] .content-meta {
+  color: #a8adb3;
+}
+
+/* 링크 */
+[saved-theme="dark"] a {
+  color: #8ab4b8;
+}
+
+[saved-theme="dark"] a:hover {
+  color: #b6d9dc;
+}
+
+/* 검색창 */
+[saved-theme="dark"] .search > .search-button {
+  background: #1a1d20;
+  border: 1px solid #2c3238;
+  color: #e7e7e7;
+  box-shadow: none;
+}
+
+/* Explorer / TOC */
+[saved-theme="dark"] .explorer,
+[saved-theme="dark"] .toc,
+[saved-theme="dark"] .left.sidebar,
+[saved-theme="dark"] .right.sidebar {
+  color: #d8d8d8;
+}
+
+[saved-theme="dark"] .toc a {
+  color: #b8bec5;
+}
+
+[saved-theme="dark"] .toc a:hover {
+  color: #8ab4b8;
+}
+
+/* 구분선 */
+[saved-theme="dark"] h2 {
+  border-bottom: 1px solid #2c3238;
+}
+
+/* 코드 블록 */
+[saved-theme="dark"] pre {
+  border: 1px solid #2c3238;
+  box-shadow: none;
+}
+
+/* 인라인 코드 */
+[saved-theme="dark"] :not(pre) > code {
+  background: #24282d;
+  color: #f3b37a;
+}
+
+/* 인용문 */
+[saved-theme="dark"] blockquote {
+  border-left: 4px solid #8ab4b8;
+  background: #1a1f22;
+  color: #d7dde2;
+}
+
+/* 표 */
+[saved-theme="dark"] table {
+  border: 1px solid #2c3238;
+}
+
+[saved-theme="dark"] th {
+  background: #1d2227;
+}
+
+/* 태그 */
+[saved-theme="dark"] .tags > li > a {
+  background: #1d2a2c;
+  color: #9ed5d8;
+  border: 1px solid #2f4a4e;
+}
+
+/* Graph View */
+[saved-theme="dark"] .left.sidebar .graph {
+  background: transparent;
+  border-color: #2c3238;
+}
+
+/* footer */
+[saved-theme="dark"] footer {
+  color: #9aa1a9;
+}
