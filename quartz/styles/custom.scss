@@ -1,3 +1,407 @@
 @use "./base.scss";
 
 // put your custom CSS here!
+
+/* ==============================
+   동균 블로그 커스텀 스타일
+   ============================== */
+
+/* 전체 배경 */
+body {
+  background: #fbfaf8;
+}
+
+/* 본문 가독성 */
+article {
+  line-height: 1.78;
+  font-size: 1.02rem;
+}
+
+/* 본문 폭 */
+
+
+/* 글 제목 */
+.article-title {
+  font-size: 2.15rem;
+  letter-spacing: -0.04em;
+  font-weight: 800;
+  margin-bottom: 0.4rem;
+}
+
+/* 글 메타 정보 */
+.content-meta {
+  color: #777;
+  font-size: 0.92rem;
+}
+
+/* 제목 계층 */
+h1,
+h2,
+h3 {
+  letter-spacing: -0.035em;
+  line-height: 1.35;
+}
+
+h2 {
+  margin-top: 2.6rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid #e7e2dc;
+}
+
+h3 {
+  margin-top: 2rem;
+}
+
+/* 링크 */
+a {
+  color: #2f5d62;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: #1f4144;
+}
+
+/* 왼쪽 사이드바 */
+.left.sidebar {
+  padding-top: 1.4rem;
+  gap: 0.85rem;
+}
+
+/* 블로그 제목 */
+.page-title a {
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: #1f2933;
+}
+
+/* 검색창 */
+.search > .search-button {
+  border-radius: 12px;
+  border: 1px solid #e5dfd8;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(20, 20, 20, 0.04);
+}
+
+/* Explorer */
+.explorer {
+  font-size: 0.95rem;
+}
+
+.explorer button {
+  border-radius: 8px;
+}
+
+/* 코드 블록 */
+pre {
+  border-radius: 14px;
+  border: 1px solid #e3ddd5;
+  box-shadow: 0 8px 22px rgba(20, 20, 20, 0.06);
+}
+
+/* 인라인 코드 */
+:not(pre) > code {
+  border-radius: 6px;
+  padding: 0.12rem 0.32rem;
+  background: #f1eee9;
+  color: #9a3412;
+  font-size: 0.92em;
+}
+
+/* 인용문 */
+blockquote {
+  border-left: 4px solid #5e8b7e;
+  background: #f4f7f5;
+  padding: 0.8rem 1rem;
+  border-radius: 0 12px 12px 0;
+  color: #374151;
+}
+
+/* 표 */
+table {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e5dfd8;
+}
+
+th {
+  background: #f1eee9;
+}
+
+/* 태그 */
+.tags {
+  gap: 0.4rem;
+}
+
+.tags > li > a {
+  border-radius: 999px;
+  padding: 0.18rem 0.58rem;
+  background: #eef4f2;
+  color: #2f5d62;
+  border: 1px solid #d7e5e1;
+}
+
+/* 오른쪽 목차 */
+.toc {
+  font-size: 0.92rem;
+}
+
+.toc a {
+  color: #555;
+}
+
+.toc a:hover {
+  color: #2f5d62;
+}
+
+/* 좌측 하단 Graph View 축소 */
+.left.sidebar .graph {
+  margin-top: 1.2rem;
+  max-height: 220px;
+  overflow: hidden;
+}
+
+.left.sidebar .graph > h3 {
+  font-size: 0.95rem;
+  margin-top: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.left.sidebar .graph canvas,
+.left.sidebar .graph svg {
+  max-height: 180px;
+}
+
+/* footer */
+footer {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+/* 모바일 */
+@media all and (max-width: 800px) {
+  article {
+    font-size: 1rem;
+    line-height: 1.72;
+  }
+
+  .article-title {
+    font-size: 1.8rem;
+  }
+}
+
+
+/* ==============================
+   반응형 레이아웃 재정리
+   ============================== */
+
+/* 
+   전체 페이지는 화면을 자연스럽게 사용하되,
+   너무 넓은 화면에서는 가운데 정렬된 넓은 작업 영역처럼 보이게 함.
+*/
+.page {
+  width: min(96vw, 86rem);
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 2vw, 2.5rem);
+}
+
+/*
+   본문은 읽기 좋은 줄 길이를 유지함.
+   px 고정 대신 ch를 사용해서 글자 수 기준으로 폭을 제한함.
+*/
+.center {
+  width: min(100%, 68ch);
+}
+
+/*
+   좌측 사이드바는 화면 크기에 따라 유동적으로 조절함.
+*/
+.left.sidebar {
+  flex: 0 1 clamp(13rem, 18vw, 19rem);
+}
+
+/*
+   우측 목차 영역도 유동적으로 조절함.
+*/
+.right.sidebar {
+  flex: 0 1 clamp(10rem, 14vw, 16rem);
+}
+
+/*
+   본문 자체는 부모 영역을 넘지 않게 함.
+*/
+article {
+  max-width: 100%;
+}
+
+/*
+   Graph View는 좌측 하단에서 작게 유지하되,
+   px 대신 rem/vh를 기준으로 제한함.
+*/
+.left.sidebar .graph {
+  margin-top: 1.2rem;
+  max-height: min(14rem, 24vh);
+  overflow: hidden;
+}
+
+.left.sidebar .graph canvas,
+.left.sidebar .graph svg {
+  max-height: min(10rem, 18vh);
+}
+
+/*
+   넓은 화면에서는 본문과 사이드바 사이 여백을 조금 더 확보함.
+*/
+@media all and (min-width: 80rem) {
+  .page {
+    width: min(94vw, 92rem);
+  }
+
+  .center {
+    width: min(100%, 72ch);
+  }
+}
+
+/*
+   태블릿 이하에서는 본문을 우선하고 여백을 줄임.
+*/
+@media all and (max-width: 64rem) {
+  .page {
+    width: min(100%, 100vw);
+    padding-inline: clamp(0.9rem, 3vw, 1.5rem);
+  }
+
+  .center {
+    width: 100%;
+  }
+}
+
+/*
+   모바일에서는 Quartz 기본 동작을 방해하지 않도록 최소한만 조정함.
+*/
+@media all and (max-width: 48rem) {
+  .page {
+    padding-inline: 1rem;
+  }
+
+  article {
+    font-size: 1rem;
+    line-height: 1.72;
+  }
+}
+
+
+/* ==============================
+   좁은 화면 가독성 보정
+   ============================== */
+
+/*
+   화면이 좁아지면 본문을 최우선으로 보여줌.
+   사이드바가 본문 공간을 침범하지 않도록 기본 폭 제한을 완화함.
+*/
+@media all and (max-width: 72rem) {
+  .page {
+    width: 100%;
+    max-width: none;
+    margin-inline: 0;
+    padding-inline: clamp(0.9rem, 3vw, 1.4rem);
+  }
+
+  .center {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+  }
+
+  article {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+  }
+
+  .left.sidebar,
+  .right.sidebar {
+    min-width: 0;
+  }
+}
+
+/*
+   태블릿 이하에서는 우측 목차를 숨겨 본문 공간을 확보함.
+   목차는 있으면 좋지만, 좁은 화면에서는 본문보다 우선순위가 낮음.
+*/
+@media all and (max-width: 64rem) {
+  .right.sidebar {
+    display: none;
+  }
+
+  .center {
+    width: 100%;
+  }
+}
+
+/*
+   모바일/좁은 화면에서는 Graph View를 숨김.
+   그래프는 시각적으로 예쁘지만, 작은 화면에서는 본문을 밀어내는 주범이 됨.
+*/
+@media all and (max-width: 56rem) {
+  .left.sidebar .graph {
+    display: none;
+  }
+}
+
+/*
+   아주 좁은 화면에서는 검색창과 탐색기가 본문을 밀지 않도록 여백을 줄임.
+*/
+@media all and (max-width: 48rem) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .page {
+    padding-inline: 0.9rem;
+  }
+
+  article {
+    font-size: 1rem;
+    line-height: 1.72;
+  }
+
+  .article-title {
+    font-size: clamp(1.65rem, 8vw, 2rem);
+    line-height: 1.2;
+  }
+
+  h1 {
+    font-size: clamp(1.55rem, 7vw, 1.9rem);
+  }
+
+  h2 {
+    font-size: clamp(1.25rem, 5.5vw, 1.5rem);
+  }
+
+  pre {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}
+
+/*
+   매우 좁은 화면에서는 좌측 사이드바 내부 요소가 과하게 넓어지지 않도록 함.
+*/
+@media all and (max-width: 36rem) {
+  .search,
+  .search > .search-button {
+    max-width: 100%;
+  }
+
+  .explorer {
+    max-width: 100%;
+  }
+}
