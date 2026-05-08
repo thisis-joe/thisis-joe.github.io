@@ -4,4 +4,4 @@ title: Hello
 
 # Hello
 
-Obsidian에서 작성한 첫 블로그 글입니다.
+Github.io 블로그로 이사한 뒤 첫 글입니다.
