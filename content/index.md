@@ -1,5 +1,5 @@
 ---
-title: Home
+title: 동블
 ---
 
 # 동균 블로그
