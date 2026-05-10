@@ -719,226 +719,40 @@ article > hr:last-child {
 
 
 /* ==============================
-   RecentPosts 최종 정리
+   본문 article 뒤 hr 제거
    ============================== */
 
 /*
-   홈 본문 끝에 Quartz/기존 CSS가 만드는 구분선을 제거.
-   단, h2 제목 밑 구분선은 건드리지 않음.
+   Quartz가 article.popover-hint 바로 뒤에 자동으로 넣는 hr 제거.
+   이 선이 "정리하는 주제" 목록 아래와 "최근 글" 사이에 보이는 중간선임.
 */
-.center > article,
-.center article,
-article.popover-hint {
-  border-bottom: 0 !important;
-  border-block-end: 0 !important;
-  box-shadow: none !important;
-}
-
-.center > article::after,
-.center article::after,
-article.popover-hint::after {
+.center > article.popover-hint + hr,
+div.center > article.popover-hint + hr,
+#quartz-body .center > article.popover-hint + hr {
   display: none !important;
-  content: none !important;
-}
-
-/*
-   최근 글 섹션 자체 위쪽 선 제거.
-*/
-.recent-feed {
-  margin-top: 1.45rem !important;
-  padding-top: 0 !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
   border: 0 !important;
-  border-top: 0 !important;
-  border-bottom: 0 !important;
-  box-shadow: none !important;
+  background: transparent !important;
 }
 
 /*
-   최근 글 제목 자체는 h2처럼 보이되,
-   전역 h2 border와 충돌하지 않도록 선을 제거.
+   최근 글 제목 아래 선은 유지.
 */
 .recent-feed-heading,
 .recent-feed > h2.recent-feed-heading,
 section.recent-feed > h2.recent-feed-heading {
-  margin: 0 0 0.45rem 0 !important;
-  padding: 0 !important;
-  border: 0 !important;
-  border-top: 0 !important;
-  border-bottom: 0 !important;
-  box-shadow: none !important;
-  color: var(--dark);
-  font-style: normal;
+  border-bottom: 1px solid var(--lightgray) !important;
+  padding-bottom: 0.35rem !important;
+  margin-bottom: 0.75rem !important;
 }
 
 /*
-   최근 글 제목 밑 선은 이 요소 하나만 담당.
+   최근 글 리스트 행에는 선 없음.
 */
-.recent-feed-heading-line {
-  display: block;
-  width: 100%;
-  height: 1px;
-  background: var(--lightgray);
-  margin: 0 0 0.75rem 0;
-}
-
-/*
-   최근 글 리스트.
-   행 구분선 없음.
-*/
-.recent-feed-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.12rem;
-  margin: 0;
-  padding: 0;
-  border: 0 !important;
-  box-shadow: none !important;
-}
-
 .recent-feed-row {
-  display: grid;
-  grid-template-columns: max-content minmax(0, 1fr) max-content;
-  column-gap: 0.85rem;
-  align-items: baseline;
-
-  padding: 0.18rem 0;
-  line-height: 1.35;
-  font-style: italic;
-
   border: 0 !important;
-  border-top: 0 !important;
-  border-bottom: 0 !important;
   box-shadow: none !important;
-}
-
-.recent-feed-label {
-  color: var(--secondary);
-  font-weight: 700;
-  font-style: italic;
-  white-space: nowrap;
-}
-
-.recent-feed-title {
-  color: #7b8087;
-  font-weight: 400;
-  font-style: italic;
-  text-decoration: none;
-  min-width: 0;
-  overflow-wrap: anywhere;
-}
-
-.recent-feed-title:hover {
-  color: var(--secondary);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.recent-feed-date {
-  color: #aeb4ba;
-  font-size: 0.76rem;
-  font-weight: 400;
-  font-style: italic;
-  white-space: nowrap;
-}
-
-.recent-feed-more {
-  margin-top: 0.55rem;
-  border: 0 !important;
-}
-
-.recent-feed-more summary {
-  cursor: pointer;
-  width: fit-content;
-  color: #6fa8dc;
-  font-weight: 600;
-  font-style: italic;
-  list-style: none;
-  transition: color 0.15s ease, transform 0.15s ease;
-}
-
-.recent-feed-more summary::-webkit-details-marker {
-  display: none;
-}
-
-.recent-feed-more summary::before {
-  content: "▸ ";
-}
-
-.recent-feed-more[open] summary::before {
-  content: "▾ ";
-}
-
-.recent-feed-more summary:hover {
-  color: #4f91c9;
-  transform: translateX(2px);
-}
-
-.recent-feed-more .recent-feed-list {
-  margin-top: 0.4rem;
-}
-
-/* 다크모드 */
-[saved-theme="dark"] .recent-feed-title {
-  color: #9aa1a9;
-}
-
-[saved-theme="dark"] .recent-feed-date {
-  color: #747c85;
-}
-
-[saved-theme="dark"] .recent-feed-title:hover {
-  color: var(--secondary);
-}
-
-[saved-theme="dark"] .recent-feed-more summary {
-  color: #8ab4e0;
-}
-
-/* 모바일 */
-@media all and (max-width: 48rem) {
-  .recent-feed-row {
-    grid-template-columns: max-content minmax(0, 1fr);
-    row-gap: 0.12rem;
-  }
-
-  .recent-feed-date {
-    grid-column: 2;
-    justify-self: start;
-  }
-}
-
-/* ==============================
-   홈 본문과 최근 글 사이 중간선 제거
-   ============================== */
-
-/* 홈 본문 article 끝에 생기는 선 제거 */
-article.popover-hint {
-  border-bottom: none !important;
-  border-block-end: none !important;
-  box-shadow: none !important;
-}
-
-/* article 내부 마지막 요소 뒤에 생기는 선 제거 */
-article.popover-hint > *:last-child {
-  border-bottom: none !important;
-  border-block-end: none !important;
-  box-shadow: none !important;
-}
-
-/* 최근 글 바로 앞에 있는 hr 제거 */
-article.popover-hint + hr,
-article.popover-hint ~ hr,
-.center > hr,
-.center hr {
-  display: none !important;
-  border: 0 !important;
-  height: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-/* 홈 화면에서 article과 recent 사이 여백만 자연스럽게 유지 */
-article.popover-hint + .recent-feed,
-.recent-feed {
-  margin-top: 1.4rem !important;
 }
