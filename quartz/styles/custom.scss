@@ -646,9 +646,13 @@ table {
 
 
 /* ==============================
-   홈 최근 글 영역
+   최근 글 리스트 재정리
    ============================== */
 
+/*
+   "최근 글" 제목은 본문 h2 스타일을 그대로 따름.
+   아래 리스트만 회색 + 이탤릭 톤으로 낮춤.
+*/
 .recent-posts {
   margin-top: 3rem;
   padding-top: 1.2rem;
@@ -657,159 +661,134 @@ table {
 
 .recent-posts > h2 {
   margin-top: 0;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.35rem;
+  color: var(--dark);
+  font-style: normal;
 }
 
-.recent-post-tabs {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(1rem, 2vw, 1.6rem);
-}
-
-.recent-post-tabs h3 {
-  font-size: 1rem;
-  margin-top: 0;
-  margin-bottom: 0.8rem;
-  color: var(--darkgray);
-}
-
+/* 리스트 기본 형태 */
 .recent-post-list {
   list-style: none;
   padding-left: 0;
   margin: 0;
 }
 
-.recent-post-list li {
+/*
+   한 줄 구성:
+   [최근 생성]  파일이름  날짜
+*/
+.recent-post-item {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 0.8rem;
+  grid-template-columns: max-content minmax(0, 1fr) max-content;
+  column-gap: 0.75rem;
   align-items: baseline;
-  padding: 0.55rem 0;
-  border-bottom: 1px solid color-mix(in srgb, var(--lightgray) 70%, transparent);
+  padding: 0.38rem 0;
+  font-style: italic;
 }
 
-.recent-post-list a {
-  font-weight: 500;
-  color: var(--dark);
+/* [최근 생성] / [최근 수정] */
+.recent-post-label {
+  color: var(--secondary);
+  font-weight: 700;
+  font-style: italic;
+  white-space: nowrap;
+}
+
+/* 파일이름 */
+.recent-post-title {
+  color: var(--gray);
+  font-weight: 400;
+  font-style: italic;
   text-decoration: none;
   overflow-wrap: anywhere;
 }
 
-.recent-post-list a:hover {
+/* 파일이름 hover */
+.recent-post-title:hover {
   color: var(--secondary);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
-.recent-post-list span {
+/* 날짜 */
+.recent-post-date {
+  color: color-mix(in srgb, var(--gray) 70%, var(--light) 30%);
   font-size: 0.82rem;
-  color: var(--gray);
+  font-weight: 400;
+  font-style: italic;
   white-space: nowrap;
 }
 
+/* 더보기 */
 .recent-post-more {
-  margin-top: 0.6rem;
+  margin-top: 0.95rem;
 }
 
 .recent-post-more summary {
   cursor: pointer;
-  font-size: 0.9rem;
+  width: fit-content;
+  color: #6fa8dc;
   font-weight: 600;
-  color: var(--secondary);
+  font-style: italic;
   list-style: none;
+  transition: color 0.15s ease, transform 0.15s ease;
 }
 
 .recent-post-more summary::-webkit-details-marker {
   display: none;
 }
 
-.recent-post-more summary::after {
-  content: " 펼치기";
-  font-weight: 400;
-  color: var(--gray);
+.recent-post-more summary::before {
+  content: "▸ ";
 }
 
-.recent-post-more[open] summary::after {
-  content: " 접기";
+.recent-post-more[open] summary::before {
+  content: "▾ ";
 }
 
-@media all and (max-width: 58rem) {
-  .recent-post-tabs {
-    grid-template-columns: 1fr;
-  }
-
-  .recent-post-list li {
-    grid-template-columns: 1fr;
-    gap: 0.2rem;
-  }
+.recent-post-more summary:hover {
+  color: #4f91c9;
+  transform: translateX(2px);
 }
 
-/* ==============================
-   최근 글 리스트 톤 다운
-   ============================== */
-
-/* 최근 글 섹션의 큰 제목은 그대로 유지 */
-.recent-posts > h2 {
-  color: var(--dark);
-  font-style: normal;
+.recent-post-more .recent-post-list {
+  margin-top: 0.65rem;
 }
 
-/* [최근 생성], [최근 수정] 머리말 */
-.recent-post-tabs h3 {
-  color: var(--gray);
-  font-style: italic;
-  font-weight: 500;
-}
-
-/* 최근 글 리스트 전체를 본문보다 한 톤 낮춤 */
-.recent-post-list {
-  color: var(--gray);
-  font-style: italic;
-}
-
-/* 최근 글 제목 링크 */
-.recent-post-list a {
-  color: var(--gray);
-  font-style: italic;
-  font-weight: 400;
-}
-
-/* hover 시에만 살짝 강조 */
-.recent-post-list a:hover {
+/* 다크모드 */
+[saved-theme="dark"] .recent-post-label {
   color: var(--secondary);
-  text-decoration: underline;
-  text-underline-offset: 3px;
 }
 
-/* 날짜도 회색 + 이탤릭 */
-.recent-post-list span {
-  color: var(--gray);
-  font-style: italic;
-  font-weight: 400;
-}
-
-/* 더보기 버튼도 같은 톤 */
-.recent-post-more summary {
-  color: var(--gray);
-  font-style: italic;
-  font-weight: 500;
-}
-
-.recent-post-more summary::after {
-  color: var(--gray);
-  font-style: italic;
-}
-
-/* 다크모드에서도 너무 밝지 않게 */
-[saved-theme="dark"] .recent-post-tabs h3,
-[saved-theme="dark"] .recent-post-list,
-[saved-theme="dark"] .recent-post-list a,
-[saved-theme="dark"] .recent-post-list span,
-[saved-theme="dark"] .recent-post-more summary,
-[saved-theme="dark"] .recent-post-more summary::after {
+[saved-theme="dark"] .recent-post-title {
   color: #9aa1a9;
 }
 
-[saved-theme="dark"] .recent-post-list a:hover {
+[saved-theme="dark"] .recent-post-title:hover {
   color: var(--secondary);
+}
+
+[saved-theme="dark"] .recent-post-date {
+  color: #7f8790;
+}
+
+[saved-theme="dark"] .recent-post-more summary {
+  color: #8ab4e0;
+}
+
+[saved-theme="dark"] .recent-post-more summary:hover {
+  color: #a7c9ea;
+}
+
+/* 좁은 화면에서는 날짜를 다음 줄로 내려서 안 깨지게 함 */
+@media all and (max-width: 48rem) {
+  .recent-post-item {
+    grid-template-columns: max-content minmax(0, 1fr);
+    row-gap: 0.15rem;
+  }
+
+  .recent-post-date {
+    grid-column: 2;
+    justify-self: start;
+  }
 }

@@ -1,10 +1,11 @@
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 
-type PostItem = {
+type RecentEvent = {
+  type: "created" | "modified"
+  label: "[최근 생성]" | "[최근 수정]"
   title: string
   slug: string
-  created?: Date
-  modified?: Date
+  date?: Date
 }
 
 function isHomePage(slug: unknown): boolean {
@@ -14,7 +15,6 @@ function isHomePage(slug: unknown): boolean {
 
 function normalizeDate(value: unknown): Date | undefined {
   if (!value) return undefined
-
   if (value instanceof Date) return value
 
   const date = new Date(String(value))
@@ -54,49 +54,52 @@ function isPublishablePost(file: any): boolean {
   return true
 }
 
-function toPostItem(file: any): PostItem {
+function toRecentEvents(file: any): RecentEvent[] {
   const slug = String(file.slug ?? "")
+  const title = titleFromFile(file)
   const dates = file.dates ?? {}
 
-  return {
-    title: titleFromFile(file),
-    slug,
-    created: normalizeDate(dates.created ?? file.frontmatter?.date),
-    modified: normalizeDate(dates.modified ?? dates.created ?? file.frontmatter?.date),
+  const created = normalizeDate(dates.created ?? file.frontmatter?.date)
+  const modified = normalizeDate(dates.modified ?? dates.created ?? file.frontmatter?.date)
+
+  const events: RecentEvent[] = []
+
+  if (created) {
+    events.push({
+      type: "created",
+      label: "[최근 생성]",
+      title,
+      slug,
+      date: created,
+    })
   }
+
+  if (modified) {
+    events.push({
+      type: "modified",
+      label: "[최근 수정]",
+      title,
+      slug,
+      date: modified,
+    })
+  }
+
+  return events
 }
 
-function renderPostList(posts: PostItem[], mode: "created" | "modified") {
-  const firstPosts = posts.slice(0, 4)
-  const restPosts = posts.slice(4)
-
-  const dateOf = (post: PostItem) => (mode === "created" ? post.created : post.modified)
-
+function renderRecentItems(events: RecentEvent[]) {
   return (
-    <div className="recent-post-section">
-      <ul className="recent-post-list">
-        {firstPosts.map((post) => (
-          <li>
-            <a href={`/${post.slug}`}>{post.title}</a>
-            <span>{formatDate(dateOf(post))}</span>
-          </li>
-        ))}
-      </ul>
-
-      {restPosts.length > 0 && (
-        <details className="recent-post-more">
-          <summary>더보기</summary>
-          <ul className="recent-post-list">
-            {restPosts.map((post) => (
-              <li>
-                <a href={`/${post.slug}`}>{post.title}</a>
-                <span>{formatDate(dateOf(post))}</span>
-              </li>
-            ))}
-          </ul>
-        </details>
-      )}
-    </div>
+    <ul className="recent-post-list">
+      {events.map((event, index) => (
+        <li className="recent-post-item" key={`${event.type}-${event.slug}-${index}`}>
+          <span className={`recent-post-label ${event.type}`}>{event.label}</span>
+          <a className="recent-post-title" href={`/${event.slug}`}>
+            {event.title}
+          </a>
+          <span className="recent-post-date">{formatDate(event.date)}</span>
+        </li>
+      ))}
+    </ul>
   )
 }
 
@@ -105,37 +108,30 @@ const RecentPosts: QuartzComponent = ({ fileData, allFiles }: QuartzComponentPro
     return null
   }
 
-  const posts = allFiles
+  const events = allFiles
     .filter(isPublishablePost)
-    .map(toPostItem)
+    .flatMap(toRecentEvents)
+    .sort((a, b) => (b.date?.getTime() ?? 0) - (a.date?.getTime() ?? 0))
 
-  const recentlyCreated = [...posts].sort(
-    (a, b) => (b.created?.getTime() ?? 0) - (a.created?.getTime() ?? 0),
-  )
-
-  const recentlyModified = [...posts].sort(
-    (a, b) => (b.modified?.getTime() ?? 0) - (a.modified?.getTime() ?? 0),
-  )
-
-  if (posts.length === 0) {
+  if (events.length === 0) {
     return null
   }
+
+  const firstEvents = events.slice(0, 7)
+  const restEvents = events.slice(7)
 
   return (
     <section className="recent-posts">
       <h2>최근 글</h2>
 
-      <div className="recent-post-tabs">
-        <div>
-          <h3>[최근 생성]</h3>
-          {renderPostList(recentlyCreated, "created")}
-        </div>
+      {renderRecentItems(firstEvents)}
 
-        <div>
-          <h3>[최근 수정]</h3>
-          {renderPostList(recentlyModified, "modified")}
-        </div>
-      </div>
+      {restEvents.length > 0 && (
+        <details className="recent-post-more">
+          <summary>더보기</summary>
+          {renderRecentItems(restEvents)}
+        </details>
+      )}
     </section>
   )
 }
