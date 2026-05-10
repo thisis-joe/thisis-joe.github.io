@@ -43,13 +43,29 @@ function titleFromFile(file: any): string {
   )
 }
 
-function isPublishablePost(file: any): boolean {
+function isFolderLikePage(file: any, allFiles: any[]): boolean {
   const slug = String(file.slug ?? "")
 
   if (!slug) return false
-  if (slug === "index") return false
-  if (slug.endsWith("/index")) return false
+  if (slug === "index") return true
+  if (slug.endsWith("/index")) return true
+
+  // 어떤 slug가 다른 글들의 상위 경로라면 폴더 페이지로 간주함.
+  // 예: slug = "Subjects"
+  //     다른 글 = "Subjects/JavaScript"
+  //     => Subjects는 폴더로 보고 최근 글에서 제외
+  return allFiles.some((other) => {
+    const otherSlug = String(other.slug ?? "")
+    return otherSlug !== slug && otherSlug.startsWith(slug + "/")
+  })
+}
+
+function isPublishablePost(file: any, allFiles: any[]): boolean {
+  const slug = String(file.slug ?? "")
+
+  if (!slug) return false
   if (file.frontmatter?.draft === true) return false
+  if (isFolderLikePage(file, allFiles)) return false
 
   return true
 }
@@ -59,8 +75,10 @@ function toRecentEvents(file: any): RecentEvent[] {
   const title = titleFromFile(file)
   const dates = file.dates ?? {}
 
-  const created = normalizeDate(dates.created ?? file.frontmatter?.date)
-  const modified = normalizeDate(dates.modified ?? dates.created ?? file.frontmatter?.date)
+  const created = normalizeDate(dates.created ?? file.frontmatter?.created ?? file.frontmatter?.date)
+  const modified = normalizeDate(
+    dates.modified ?? file.frontmatter?.updated ?? dates.created ?? file.frontmatter?.date,
+  )
 
   const events: RecentEvent[] = []
 
@@ -87,6 +105,27 @@ function toRecentEvents(file: any): RecentEvent[] {
   return events
 }
 
+function removeAdjacentDuplicateEvents(events: RecentEvent[]): RecentEvent[] {
+  const result: RecentEvent[] = []
+
+  for (const event of events) {
+    const previous = result[result.length - 1]
+
+    if (previous && previous.slug === event.slug) {
+      // 같은 글의 최근 생성/최근 수정이 연속으로 붙으면 최근 생성만 남김.
+      if (previous.type === "created" || event.type === "created") {
+        result[result.length - 1] = previous.type === "created" ? previous : event
+      }
+
+      continue
+    }
+
+    result.push(event)
+  }
+
+  return result
+}
+
 function RecentRows({ events }: { events: RecentEvent[] }) {
   return (
     <div class="recent-feed-list">
@@ -109,16 +148,28 @@ const RecentPosts: QuartzComponent = ({ fileData, allFiles }: QuartzComponentPro
   }
 
   const events = allFiles
-    .filter(isPublishablePost)
+    .filter((file) => isPublishablePost(file, allFiles))
     .flatMap(toRecentEvents)
-    .sort((a, b) => (b.date?.getTime() ?? 0) - (a.date?.getTime() ?? 0))
+    .sort((a, b) => {
+      const timeDiff = (b.date?.getTime() ?? 0) - (a.date?.getTime() ?? 0)
 
-  if (events.length === 0) {
+      if (timeDiff !== 0) return timeDiff
+
+      // 시간이 같으면 최근 생성이 최근 수정보다 먼저 오게 함.
+      if (a.type === "created" && b.type === "modified") return -1
+      if (a.type === "modified" && b.type === "created") return 1
+
+      return a.title.localeCompare(b.title, "ko")
+    })
+
+  const dedupedEvents = removeAdjacentDuplicateEvents(events)
+
+  if (dedupedEvents.length === 0) {
     return null
   }
 
-  const firstEvents = events.slice(0, 7)
-  const restEvents = events.slice(7)
+  const firstEvents = dedupedEvents.slice(0, 7)
+  const restEvents = dedupedEvents.slice(7)
 
   return (
     <section class="recent-feed">
