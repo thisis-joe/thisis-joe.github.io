@@ -1,1 +1,0 @@
-git push origin --delete `브랜치이름` 하고, git fetch -p origin해서 내 로컬도 ᄋ
