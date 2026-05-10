@@ -1,8 +1,0 @@
-git fetch all
-git reset --hard origin/main
-git pull
-	-              git reset --hard obsi/master  등
-
-
-
-[[Git]]
