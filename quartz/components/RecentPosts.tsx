@@ -91,11 +91,13 @@ function RecentRows({ events }: { events: RecentEvent[] }) {
   return (
     <div className="recent-feed-list">
       {events.map((event, index) => (
-        <a className="recent-feed-row" href={`/${event.slug}`} key={`${event.type}-${event.slug}-${index}`}>
+        <div className="recent-feed-row" key={`${event.type}-${event.slug}-${index}`}>
           <span className={`recent-feed-label ${event.type}`}>{event.label}</span>
-          <span className="recent-feed-title">{event.title}</span>
+          <a className="recent-feed-title" href={`/${event.slug}`}>
+            {event.title}
+          </a>
           <time className="recent-feed-date">{formatDate(event.date)}</time>
-        </a>
+        </div>
       ))}
     </div>
   )

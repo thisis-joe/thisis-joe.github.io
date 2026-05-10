@@ -646,18 +646,16 @@ table {
 
 
 /* ==============================
-   최근 글 피드 재정리
+   최근 글 피드 레이아웃 수정
    ============================== */
 
-/*
-   "최근 글" 제목은 일반 h2처럼 유지.
-*/
 .recent-feed {
   margin-top: 3rem;
   padding-top: 1.2rem;
   border-top: 1px solid var(--lightgray);
 }
 
+/* 최근 글 제목은 기존 h2 스타일 유지 */
 .recent-feed > h2 {
   margin-top: 0;
   margin-bottom: 1.25rem;
@@ -665,14 +663,13 @@ table {
   font-style: normal;
 }
 
-/*
-   최근 글 리스트.
-   기존 ul/li 스타일과 충돌하지 않도록 별도 class 사용.
-*/
+/* 리스트 컨테이너 */
 .recent-feed-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.12rem;
+  margin: 0;
+  padding: 0;
 }
 
 /*
@@ -680,70 +677,52 @@ table {
    [최근 생성]  파일이름  날짜
 */
 .recent-feed-row {
-  display: grid;
-  grid-template-columns: max-content minmax(0, 1fr) max-content;
-  column-gap: 0.75rem;
+  display: grid !important;
+  grid-template-columns: max-content minmax(0, 1fr) max-content !important;
+  column-gap: 0.8rem;
   align-items: baseline;
 
   padding: 0.42rem 0;
   border-bottom: 1px solid color-mix(in srgb, var(--lightgray) 65%, transparent);
 
-  text-decoration: none;
   font-style: italic;
 }
 
-/*
-   [최근 생성] / [최근 수정]
-   - 볼드
-   - 청록색
-   - 이탤릭
-*/
+/* [최근 생성] / [최근 수정] */
 .recent-feed-label {
-  color: var(--secondary);
-  font-weight: 700;
-  font-style: italic;
+  color: var(--secondary) !important;
+  font-weight: 700 !important;
+  font-style: italic !important;
   white-space: nowrap;
 }
 
-/*
-   파일이름
-   - 회색
-   - 이탤릭
-*/
+/* 파일이름 */
 .recent-feed-title {
-  color: #7b8087;
-  font-weight: 400;
-  font-style: italic;
+  color: #7b8087 !important;
+  font-weight: 400 !important;
+  font-style: italic !important;
+  text-decoration: none !important;
   overflow-wrap: anywhere;
   min-width: 0;
 }
 
-/*
-   날짜
-   - 더 연한 회색
-   - 더 작은 글씨
-   - 이탤릭
-*/
-.recent-feed-date {
-  color: #aeb4ba;
-  font-size: 0.82rem;
-  font-weight: 400;
-  font-style: italic;
-  white-space: nowrap;
-}
-
-/*
-   hover 시 파일명만 살짝 강조.
-*/
-.recent-feed-row:hover .recent-feed-title {
-  color: var(--secondary);
-  text-decoration: underline;
+/* 파일이름 hover */
+.recent-feed-title:hover {
+  color: var(--secondary) !important;
+  text-decoration: underline !important;
   text-underline-offset: 3px;
 }
 
-/*
-   더보기는 클릭 유도 가능하게 파스텔 블루.
-*/
+/* 날짜 */
+.recent-feed-date {
+  color: #aeb4ba !important;
+  font-size: 0.82rem !important;
+  font-weight: 400 !important;
+  font-style: italic !important;
+  white-space: nowrap;
+}
+
+/* 더보기 */
 .recent-feed-more {
   margin-top: 0.9rem;
 }
@@ -751,9 +730,9 @@ table {
 .recent-feed-more summary {
   cursor: pointer;
   width: fit-content;
-  color: #6fa8dc;
-  font-weight: 600;
-  font-style: italic;
+  color: #6fa8dc !important;
+  font-weight: 600 !important;
+  font-style: italic !important;
   list-style: none;
   transition: color 0.15s ease, transform 0.15s ease;
 }
@@ -771,7 +750,7 @@ table {
 }
 
 .recent-feed-more summary:hover {
-  color: #4f91c9;
+  color: #4f91c9 !important;
   transform: translateX(2px);
 }
 
@@ -779,35 +758,27 @@ table {
   margin-top: 0.6rem;
 }
 
-/*
-   다크모드.
-*/
+/* 다크모드 */
 [saved-theme="dark"] .recent-feed-title {
-  color: #9aa1a9;
+  color: #9aa1a9 !important;
 }
 
 [saved-theme="dark"] .recent-feed-date {
-  color: #747c85;
+  color: #747c85 !important;
 }
 
-[saved-theme="dark"] .recent-feed-row:hover .recent-feed-title {
-  color: var(--secondary);
+[saved-theme="dark"] .recent-feed-title:hover {
+  color: var(--secondary) !important;
 }
 
 [saved-theme="dark"] .recent-feed-more summary {
-  color: #8ab4e0;
+  color: #8ab4e0 !important;
 }
 
-[saved-theme="dark"] .recent-feed-more summary:hover {
-  color: #a7c9ea;
-}
-
-/*
-   좁은 화면에서는 날짜를 다음 줄로 내려서 깨짐 방지.
-*/
+/* 좁은 화면 */
 @media all and (max-width: 48rem) {
   .recent-feed-row {
-    grid-template-columns: max-content minmax(0, 1fr);
+    grid-template-columns: max-content minmax(0, 1fr) !important;
     row-gap: 0.15rem;
   }
 
