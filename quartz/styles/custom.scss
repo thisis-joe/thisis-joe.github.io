@@ -193,221 +193,6 @@ footer {
 
 
 /* ==============================
-   반응형 레이아웃 재정리
-   ============================== */
-
-/* 
-   전체 페이지는 화면을 자연스럽게 사용하되,
-   너무 넓은 화면에서는 가운데 정렬된 넓은 작업 영역처럼 보이게 함.
-*/
-.page {
-  width: min(96vw, 86rem);
-  margin-inline: auto;
-  padding-inline: clamp(1rem, 2vw, 2.5rem);
-}
-
-/*
-   본문은 읽기 좋은 줄 길이를 유지함.
-   px 고정 대신 ch를 사용해서 글자 수 기준으로 폭을 제한함.
-*/
-.center {
-  width: min(100%, 68ch);
-}
-
-/*
-   좌측 사이드바는 화면 크기에 따라 유동적으로 조절함.
-*/
-.left.sidebar {
-  flex: 0 1 clamp(13rem, 18vw, 19rem);
-}
-
-/*
-   우측 목차 영역도 유동적으로 조절함.
-*/
-.right.sidebar {
-  flex: 0 1 clamp(10rem, 14vw, 16rem);
-}
-
-/*
-   본문 자체는 부모 영역을 넘지 않게 함.
-*/
-article {
-  max-width: 100%;
-}
-
-/*
-   Graph View는 좌측 하단에서 작게 유지하되,
-   px 대신 rem/vh를 기준으로 제한함.
-*/
-.left.sidebar .graph {
-  margin-top: 1.2rem;
-  max-height: min(14rem, 24vh);
-  overflow: hidden;
-}
-
-.left.sidebar .graph canvas,
-.left.sidebar .graph svg {
-  max-height: min(10rem, 18vh);
-}
-
-/*
-   넓은 화면에서는 본문과 사이드바 사이 여백을 조금 더 확보함.
-*/
-@media all and (min-width: 80rem) {
-  .page {
-    width: min(94vw, 92rem);
-  }
-
-  .center {
-    width: min(100%, 72ch);
-  }
-}
-
-/*
-   태블릿 이하에서는 본문을 우선하고 여백을 줄임.
-*/
-@media all and (max-width: 64rem) {
-  .page {
-    width: min(100%, 100vw);
-    padding-inline: clamp(0.9rem, 3vw, 1.5rem);
-  }
-
-  .center {
-    width: 100%;
-  }
-}
-
-/*
-   모바일에서는 Quartz 기본 동작을 방해하지 않도록 최소한만 조정함.
-*/
-@media all and (max-width: 48rem) {
-  .page {
-    padding-inline: 1rem;
-  }
-
-  article {
-    font-size: 1rem;
-    line-height: 1.72;
-  }
-}
-
-
-/* ==============================
-   좁은 화면 가독성 보정
-   ============================== */
-
-/*
-   화면이 좁아지면 본문을 최우선으로 보여줌.
-   사이드바가 본문 공간을 침범하지 않도록 기본 폭 제한을 완화함.
-*/
-@media all and (max-width: 72rem) {
-  .page {
-    width: 100%;
-    max-width: none;
-    margin-inline: 0;
-    padding-inline: clamp(0.9rem, 3vw, 1.4rem);
-  }
-
-  .center {
-    width: 100%;
-    max-width: none;
-    min-width: 0;
-  }
-
-  article {
-    width: 100%;
-    max-width: none;
-    min-width: 0;
-  }
-
-  .left.sidebar,
-  .right.sidebar {
-    min-width: 0;
-  }
-}
-
-/*
-   태블릿 이하에서는 우측 목차를 숨겨 본문 공간을 확보함.
-   목차는 있으면 좋지만, 좁은 화면에서는 본문보다 우선순위가 낮음.
-*/
-@media all and (max-width: 64rem) {
-  .right.sidebar {
-    display: none;
-  }
-
-  .center {
-    width: 100%;
-  }
-}
-
-/*
-   모바일/좁은 화면에서는 Graph View를 숨김.
-   그래프는 시각적으로 예쁘지만, 작은 화면에서는 본문을 밀어내는 주범이 됨.
-*/
-@media all and (max-width: 56rem) {
-  .left.sidebar .graph {
-    display: none;
-  }
-}
-
-/*
-   아주 좁은 화면에서는 검색창과 탐색기가 본문을 밀지 않도록 여백을 줄임.
-*/
-@media all and (max-width: 48rem) {
-  body {
-    overflow-x: hidden;
-  }
-
-  .page {
-    padding-inline: 0.9rem;
-  }
-
-  article {
-    font-size: 1rem;
-    line-height: 1.72;
-  }
-
-  .article-title {
-    font-size: clamp(1.65rem, 8vw, 2rem);
-    line-height: 1.2;
-  }
-
-  h1 {
-    font-size: clamp(1.55rem, 7vw, 1.9rem);
-  }
-
-  h2 {
-    font-size: clamp(1.25rem, 5.5vw, 1.5rem);
-  }
-
-  pre {
-    max-width: 100%;
-    overflow-x: auto;
-  }
-
-  table {
-    display: block;
-    max-width: 100%;
-    overflow-x: auto;
-  }
-}
-
-/*
-   매우 좁은 화면에서는 좌측 사이드바 내부 요소가 과하게 넓어지지 않도록 함.
-*/
-@media all and (max-width: 36rem) {
-  .search,
-  .search > .search-button {
-    max-width: 100%;
-  }
-
-  .explorer {
-    max-width: 100%;
-  }
-}
-
-
-/* ==============================
    다크모드 색상 보정
    ============================== */
 
@@ -566,102 +351,6 @@ article {
 
 
 /* ==============================
-   본문 확장 및 사이드바 축소
-   ============================== */
-
-/*
-   Quartz 기본 레이아웃에서 좌우 사이드바가 넓게 잡히는 문제를 줄이고,
-   본문 영역을 더 넓게 사용하도록 조정함.
-*/
-.page {
-  width: min(98vw, 94rem);
-  margin-inline: auto;
-  padding-inline: clamp(0.8rem, 1.5vw, 1.5rem);
-}
-
-/*
-   본문은 기존 ch 기준보다 넓게 잡음.
-   기술 글, 코드, 목록이 많은 블로그라 80ch 정도까지 허용.
-*/
-.center {
-  width: min(100%, 82ch);
-  max-width: 82ch;
-}
-
-/*
-   좌측 사이드바를 줄임.
-   Explorer가 너무 넓게 잡히지 않도록 제한.
-*/
-.left.sidebar {
-  flex: 0 0 clamp(10rem, 14vw, 15rem);
-  max-width: clamp(10rem, 14vw, 15rem);
-}
-
-/*
-   우측 목차는 더 작게.
-*/
-.right.sidebar {
-  flex: 0 0 clamp(6.5rem, 8vw, 9rem);
-  max-width: clamp(6.5rem, 8vw, 9rem);
-}
-
-/*
-   우측 목차 내부 간격도 줄임.
-*/
-.right.sidebar .toc {
-  font-size: 0.82rem;
-  line-height: 1.38;
-}
-
-.right.sidebar .toc h3 {
-  font-size: 0.86rem;
-  margin-bottom: 0.35rem;
-}
-
-.right.sidebar .toc ul {
-  padding-left: 0.6rem;
-}
-
-.right.sidebar .toc li {
-  margin: 0.12rem 0;
-}
-
-/*
-   본문 하단 구분선이 너무 길거나 어색하지 않게 본문 폭에 맞춤.
-*/
-article {
-  max-width: 100%;
-}
-
-/*
-   넓은 화면에서는 본문을 조금 더 넓힘.
-*/
-@media all and (min-width: 90rem) {
-  .page {
-    width: min(98vw, 100rem);
-  }
-
-  .center {
-    width: min(100%, 88ch);
-    max-width: 88ch;
-  }
-}
-
-/*
-   중간 이하 화면에서는 우측 목차를 숨겨 본문을 우선함.
-*/
-@media all and (max-width: 72rem) {
-  .right.sidebar {
-    display: none;
-  }
-
-  .center {
-    width: 100%;
-    max-width: none;
-  }
-}
-
-/* ==============================
    Explorer 홈 파일 숨김
    ============================== */
 
@@ -710,4 +399,197 @@ article {
 .explorer button,
 .explorer .folder-title {
   font-weight: 600 !important;
+}
+
+
+/* ==============================
+   레이아웃 비율 재조정
+   ============================== */
+
+/*
+   목표:
+   - 좌측 Explorer는 파일명이 길 수 있으므로 충분히 확보
+   - 본문은 가장 넓게
+   - 우측 목차는 보조 영역이므로 작게
+*/
+.page {
+  width: min(98vw, 108rem);
+  margin-inline: auto;
+  padding-inline: clamp(0.9rem, 1.6vw, 1.8rem);
+}
+
+/*
+   본문은 기술 글과 코드 설명을 고려해 넉넉하게.
+   너무 긴 줄은 막기 위해 ch 기준으로 제한.
+*/
+.center {
+  width: min(100%, 88ch);
+  max-width: 88ch;
+  min-width: 0;
+}
+
+/*
+   좌측 Explorer 영역.
+   파일명이 길어질 수 있으므로 우측 목차보다 확실히 넓게 잡음.
+*/
+.left.sidebar {
+  flex: 0 1 clamp(15rem, 19vw, 22rem);
+  max-width: clamp(15rem, 19vw, 22rem);
+  min-width: clamp(13rem, 16vw, 17rem);
+}
+
+/*
+   우측 목차 영역.
+   목차는 보조 정보라 좁게 유지.
+*/
+.right.sidebar {
+  flex: 0 1 clamp(7rem, 8vw, 10rem);
+  max-width: clamp(7rem, 8vw, 10rem);
+  min-width: clamp(6rem, 7vw, 8rem);
+}
+
+/*
+   목차 내부도 조밀하게.
+*/
+.right.sidebar .toc {
+  font-size: 0.82rem;
+  line-height: 1.38;
+}
+
+.right.sidebar .toc h3 {
+  font-size: 0.86rem;
+  margin-bottom: 0.35rem;
+}
+
+.right.sidebar .toc ul {
+  padding-left: 0.6rem;
+}
+
+.right.sidebar .toc li {
+  margin: 0.12rem 0;
+}
+
+/*
+   Explorer 파일명이 길 때 줄바꿈 허용.
+   너무 길어도 오른쪽으로 삐져나가지 않게 함.
+*/
+.explorer {
+  max-width: 100%;
+}
+
+.explorer a,
+.explorer button {
+  overflow-wrap: anywhere;
+  word-break: keep-all;
+  line-height: 1.45;
+}
+
+/*
+   폴더명은 살짝 강조, 파일명은 과하게 굵지 않게.
+*/
+.explorer button,
+.explorer .folder-title {
+  font-weight: 600 !important;
+}
+
+.explorer a {
+  font-weight: 400 !important;
+}
+
+/*
+   Graph View는 좌측 하단에서 Explorer 아래에 작게 유지.
+*/
+.left.sidebar .graph {
+  margin-top: 1.3rem;
+  max-height: min(13rem, 22vh);
+  overflow: hidden;
+}
+
+.left.sidebar .graph canvas,
+.left.sidebar .graph svg {
+  max-height: min(9.5rem, 16vh);
+}
+
+/*
+   매우 넓은 화면에서는 본문을 조금 더 넓힘.
+*/
+@media all and (min-width: 100rem) {
+  .page {
+    width: min(98vw, 116rem);
+  }
+
+  .center {
+    width: min(100%, 94ch);
+    max-width: 94ch;
+  }
+
+  .left.sidebar {
+    flex-basis: clamp(16rem, 20vw, 24rem);
+    max-width: clamp(16rem, 20vw, 24rem);
+  }
+
+  .right.sidebar {
+    flex-basis: clamp(7rem, 7vw, 9rem);
+    max-width: clamp(7rem, 7vw, 9rem);
+  }
+}
+
+/*
+   중간 화면에서는 우측 목차를 먼저 숨겨 본문과 좌측 탐색기를 살림.
+*/
+@media all and (max-width: 78rem) {
+  .right.sidebar {
+    display: none;
+  }
+
+  .page {
+    width: 100%;
+    padding-inline: clamp(0.9rem, 2.5vw, 1.5rem);
+  }
+
+  .center {
+    width: min(100%, 86ch);
+    max-width: 86ch;
+  }
+
+  .left.sidebar {
+    flex-basis: clamp(13rem, 22vw, 18rem);
+    max-width: clamp(13rem, 22vw, 18rem);
+  }
+}
+
+/*
+   더 좁은 화면에서는 본문을 우선.
+   좌측 사이드바와 Graph가 본문을 밀어내지 않도록 함.
+*/
+@media all and (max-width: 56rem) {
+  .center {
+    width: 100%;
+    max-width: none;
+  }
+
+  .left.sidebar .graph {
+    display: none;
+  }
+}
+
+/*
+   모바일에서는 Quartz 기본 모바일 레이아웃을 방해하지 않도록 최소 조정.
+*/
+@media all and (max-width: 48rem) {
+  .page {
+    width: 100%;
+    padding-inline: 1rem;
+  }
+
+  article {
+    font-size: 1rem;
+    line-height: 1.72;
+  }
+
+  pre,
+  table {
+    max-width: 100%;
+    overflow-x: auto;
+  }
 }
