@@ -646,7 +646,7 @@ table {
 
 
 /* ==============================
-   최근 글 피드 레이아웃 수정
+   최근 글 class 보정
    ============================== */
 
 .recent-feed {
@@ -655,7 +655,6 @@ table {
   border-top: 1px solid var(--lightgray);
 }
 
-/* 최근 글 제목은 기존 h2 스타일 유지 */
 .recent-feed > h2 {
   margin-top: 0;
   margin-bottom: 1.25rem;
@@ -663,66 +662,54 @@ table {
   font-style: normal;
 }
 
-/* 리스트 컨테이너 */
 .recent-feed-list {
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 0.12rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.18rem;
   margin: 0;
   padding: 0;
 }
 
-/*
-   한 줄 구조:
-   [최근 생성]  파일이름  날짜
-*/
 .recent-feed-row {
-  display: grid !important;
-  grid-template-columns: max-content minmax(0, 1fr) max-content !important;
-  column-gap: 0.8rem;
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr) max-content;
+  column-gap: 0.9rem;
   align-items: baseline;
-
   padding: 0.42rem 0;
   border-bottom: 1px solid color-mix(in srgb, var(--lightgray) 65%, transparent);
-
   font-style: italic;
 }
 
-/* [최근 생성] / [최근 수정] */
 .recent-feed-label {
-  color: var(--secondary) !important;
-  font-weight: 700 !important;
-  font-style: italic !important;
+  color: var(--secondary);
+  font-weight: 700;
+  font-style: italic;
   white-space: nowrap;
 }
 
-/* 파일이름 */
 .recent-feed-title {
-  color: #7b8087 !important;
-  font-weight: 400 !important;
-  font-style: italic !important;
-  text-decoration: none !important;
-  overflow-wrap: anywhere;
+  color: #7b8087;
+  font-weight: 400;
+  font-style: italic;
+  text-decoration: none;
   min-width: 0;
+  overflow-wrap: anywhere;
 }
 
-/* 파일이름 hover */
 .recent-feed-title:hover {
-  color: var(--secondary) !important;
-  text-decoration: underline !important;
+  color: var(--secondary);
+  text-decoration: underline;
   text-underline-offset: 3px;
 }
 
-/* 날짜 */
 .recent-feed-date {
-  color: #aeb4ba !important;
-  font-size: 0.82rem !important;
-  font-weight: 400 !important;
-  font-style: italic !important;
+  color: #aeb4ba;
+  font-size: 0.82rem;
+  font-weight: 400;
+  font-style: italic;
   white-space: nowrap;
 }
 
-/* 더보기 */
 .recent-feed-more {
   margin-top: 0.9rem;
 }
@@ -730,9 +717,9 @@ table {
 .recent-feed-more summary {
   cursor: pointer;
   width: fit-content;
-  color: #6fa8dc !important;
-  font-weight: 600 !important;
-  font-style: italic !important;
+  color: #6fa8dc;
+  font-weight: 600;
+  font-style: italic;
   list-style: none;
   transition: color 0.15s ease, transform 0.15s ease;
 }
@@ -750,7 +737,7 @@ table {
 }
 
 .recent-feed-more summary:hover {
-  color: #4f91c9 !important;
+  color: #4f91c9;
   transform: translateX(2px);
 }
 
@@ -758,27 +745,25 @@ table {
   margin-top: 0.6rem;
 }
 
-/* 다크모드 */
 [saved-theme="dark"] .recent-feed-title {
-  color: #9aa1a9 !important;
+  color: #9aa1a9;
 }
 
 [saved-theme="dark"] .recent-feed-date {
-  color: #747c85 !important;
+  color: #747c85;
 }
 
 [saved-theme="dark"] .recent-feed-title:hover {
-  color: var(--secondary) !important;
+  color: var(--secondary);
 }
 
 [saved-theme="dark"] .recent-feed-more summary {
-  color: #8ab4e0 !important;
+  color: #8ab4e0;
 }
 
-/* 좁은 화면 */
 @media all and (max-width: 48rem) {
   .recent-feed-row {
-    grid-template-columns: max-content minmax(0, 1fr) !important;
+    grid-template-columns: max-content minmax(0, 1fr);
     row-gap: 0.15rem;
   }
 

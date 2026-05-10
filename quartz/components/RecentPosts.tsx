@@ -89,14 +89,14 @@ function toRecentEvents(file: any): RecentEvent[] {
 
 function RecentRows({ events }: { events: RecentEvent[] }) {
   return (
-    <div className="recent-feed-list">
+    <div class="recent-feed-list">
       {events.map((event, index) => (
-        <div className="recent-feed-row" key={`${event.type}-${event.slug}-${index}`}>
-          <span className={`recent-feed-label ${event.type}`}>{event.label}</span>
-          <a className="recent-feed-title" href={`/${event.slug}`}>
+        <div class="recent-feed-row" key={`${event.type}-${event.slug}-${index}`}>
+          <span class={`recent-feed-label ${event.type}`}>{event.label}</span>
+          <a class="recent-feed-title" href={`/${event.slug}`}>
             {event.title}
           </a>
-          <time className="recent-feed-date">{formatDate(event.date)}</time>
+          <time class="recent-feed-date">{formatDate(event.date)}</time>
         </div>
       ))}
     </div>
@@ -121,13 +121,13 @@ const RecentPosts: QuartzComponent = ({ fileData, allFiles }: QuartzComponentPro
   const restEvents = events.slice(7)
 
   return (
-    <section className="recent-feed">
+    <section class="recent-feed">
       <h2>최근 글</h2>
 
       <RecentRows events={firstEvents} />
 
       {restEvents.length > 0 && (
-        <details className="recent-feed-more">
+        <details class="recent-feed-more">
           <summary>더보기</summary>
           <RecentRows events={restEvents} />
         </details>
