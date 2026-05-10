@@ -403,101 +403,134 @@ footer {
 
 
 /* ==============================
-   레이아웃 비율 재조정
+   Quartz Grid 레이아웃 비율 조정
    ============================== */
 
 /*
-   목표:
-   - 좌측 Explorer는 파일명이 길 수 있으므로 충분히 확보
-   - 본문은 가장 넓게
-   - 우측 목차는 보조 영역이므로 작게
+   Quartz의 페이지 레이아웃은 flex가 아니라 grid 기반임.
+   따라서 좌측/본문/우측 폭은 flex가 아니라 grid-template-columns로 잡아야 안정적으로 반영됨.
 */
 .page {
-  width: min(98vw, 108rem);
+  width: min(98vw, 118rem);
   margin-inline: auto;
-  padding-inline: clamp(0.9rem, 1.6vw, 1.8rem);
+  padding-inline: clamp(0.8rem, 1.4vw, 1.6rem);
+
+  /*
+     좌측: 파일명이 길 수 있으므로 넉넉하게
+     본문: 남는 공간을 가장 많이 사용
+     우측: 목차가 잘리지 않을 정도만 확보
+  */
+  grid-template-columns:
+    minmax(18rem, 22rem)
+    minmax(0, 1fr)
+    minmax(12rem, 15rem) !important;
+
+  column-gap: clamp(2rem, 3vw, 4rem);
 }
 
 /*
-   본문은 기술 글과 코드 설명을 고려해 넉넉하게.
-   너무 긴 줄은 막기 위해 ch 기준으로 제한.
+   본문은 grid 가운데 칸을 충분히 사용하되,
+   너무 긴 줄이 되지 않도록 글자 수 기준으로 제한함.
 */
 .center {
-  width: min(100%, 88ch);
-  max-width: 88ch;
+  width: 100%;
+  max-width: 96ch;
   min-width: 0;
 }
 
 /*
-   좌측 Explorer 영역.
-   파일명이 길어질 수 있으므로 우측 목차보다 확실히 넓게 잡음.
+   article 내부도 부모 폭을 온전히 사용.
+*/
+article {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+/*
+   좌측 Explorer는 긴 파일명도 적당히 보이게 함.
 */
 .left.sidebar {
-  flex: 0 1 clamp(15rem, 19vw, 22rem);
-  max-width: clamp(15rem, 19vw, 22rem);
-  min-width: clamp(13rem, 16vw, 17rem);
+  width: 100%;
+  min-width: 0;
+  max-width: none;
 }
 
-/*
-   우측 목차 영역.
-   목차는 보조 정보라 좁게 유지.
-*/
-.right.sidebar {
-  flex: 0 1 clamp(7rem, 8vw, 10rem);
-  max-width: clamp(7rem, 8vw, 10rem);
-  min-width: clamp(6rem, 7vw, 8rem);
-}
-
-/*
-   목차 내부도 조밀하게.
-*/
-.right.sidebar .toc {
-  font-size: 0.82rem;
-  line-height: 1.38;
-}
-
-.right.sidebar .toc h3 {
-  font-size: 0.86rem;
-  margin-bottom: 0.35rem;
-}
-
-.right.sidebar .toc ul {
-  padding-left: 0.6rem;
-}
-
-.right.sidebar .toc li {
-  margin: 0.12rem 0;
-}
-
-/*
-   Explorer 파일명이 길 때 줄바꿈 허용.
-   너무 길어도 오른쪽으로 삐져나가지 않게 함.
-*/
 .explorer {
+  width: 100%;
   max-width: 100%;
 }
 
 .explorer a,
 .explorer button {
+  line-height: 1.45;
   overflow-wrap: anywhere;
   word-break: keep-all;
-  line-height: 1.45;
 }
 
 /*
-   폴더명은 살짝 강조, 파일명은 과하게 굵지 않게.
+   파일명은 과하게 굵지 않게.
+   폴더명만 살짝 강조.
 */
+.explorer a {
+  font-weight: 400 !important;
+}
+
 .explorer button,
 .explorer .folder-title {
   font-weight: 600 !important;
 }
 
-.explorer a {
-  font-weight: 400 !important;
+/*
+   우측 목차는 잘리지 않게 폭을 확보하고,
+   너무 좁게 줄바꿈되지 않도록 처리함.
+*/
+.right.sidebar {
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+}
+
+.right.sidebar .toc {
+  width: 100%;
+  max-width: none;
+  font-size: 0.86rem;
+  line-height: 1.48;
 }
 
 /*
-   Graph View는 좌측 하단에서 Explorer 아래에 작게 유지.
+   목차 항목이 한 글자씩 이상하게 잘리지 않도록 함.
+*/
+.right.sidebar .toc a,
+.right.sidebar .toc li {
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.right.sidebar .toc h3 {
+  font-size: 0.9rem;
+  margin-bottom: 0.4rem;
+}
+
+.right.sidebar .toc ul {
+  padding-left: 0.75rem;
+}
+
+.right.sidebar .toc li {
+  margin: 0.16rem 0;
+}
+
+/*
+   코드블록은 본문 폭 안에서 자연스럽게 스크롤.
+*/
+pre,
+table {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+/*
+   그래프뷰는 좌측 하단에서 작게 유지.
 */
 .left.sidebar .graph {
   margin-top: 1.3rem;
@@ -511,58 +544,52 @@ footer {
 }
 
 /*
-   매우 넓은 화면에서는 본문을 조금 더 넓힘.
+   아주 넓은 화면에서는 좌측과 본문을 조금 더 넓힘.
 */
-@media all and (min-width: 100rem) {
+@media all and (min-width: 105rem) {
   .page {
-    width: min(98vw, 116rem);
+    width: min(98vw, 128rem);
+    grid-template-columns:
+      minmax(20rem, 25rem)
+      minmax(0, 1fr)
+      minmax(13rem, 16rem) !important;
   }
 
   .center {
-    width: min(100%, 94ch);
-    max-width: 94ch;
-  }
-
-  .left.sidebar {
-    flex-basis: clamp(16rem, 20vw, 24rem);
-    max-width: clamp(16rem, 20vw, 24rem);
-  }
-
-  .right.sidebar {
-    flex-basis: clamp(7rem, 7vw, 9rem);
-    max-width: clamp(7rem, 7vw, 9rem);
+    max-width: 104ch;
   }
 }
 
 /*
-   중간 화면에서는 우측 목차를 먼저 숨겨 본문과 좌측 탐색기를 살림.
+   중간 화면에서는 우측 목차를 먼저 숨김.
+   본문과 좌측 탐색기를 우선함.
 */
-@media all and (max-width: 78rem) {
+@media all and (max-width: 82rem) {
+  .page {
+    width: 100%;
+    grid-template-columns:
+      minmax(15rem, 19rem)
+      minmax(0, 1fr) !important;
+  }
+
   .right.sidebar {
     display: none;
   }
 
-  .page {
-    width: 100%;
-    padding-inline: clamp(0.9rem, 2.5vw, 1.5rem);
-  }
-
   .center {
-    width: min(100%, 86ch);
-    max-width: 86ch;
-  }
-
-  .left.sidebar {
-    flex-basis: clamp(13rem, 22vw, 18rem);
-    max-width: clamp(13rem, 22vw, 18rem);
+    max-width: 92ch;
   }
 }
 
 /*
-   더 좁은 화면에서는 본문을 우선.
-   좌측 사이드바와 Graph가 본문을 밀어내지 않도록 함.
+   좁은 화면에서는 본문을 최우선.
 */
-@media all and (max-width: 56rem) {
+@media all and (max-width: 58rem) {
+  .page {
+    width: 100%;
+    padding-inline: 1rem;
+  }
+
   .center {
     width: 100%;
     max-width: none;
@@ -574,22 +601,11 @@ footer {
 }
 
 /*
-   모바일에서는 Quartz 기본 모바일 레이아웃을 방해하지 않도록 최소 조정.
+   모바일에서는 Quartz 기본 모바일 동작을 최대한 방해하지 않음.
 */
 @media all and (max-width: 48rem) {
-  .page {
-    width: 100%;
-    padding-inline: 1rem;
-  }
-
   article {
     font-size: 1rem;
     line-height: 1.72;
-  }
-
-  pre,
-  table {
-    max-width: 100%;
-    overflow-x: auto;
   }
 }
