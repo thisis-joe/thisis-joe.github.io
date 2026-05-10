@@ -525,3 +525,41 @@ article {
 [saved-theme="dark"] footer {
   color: #9aa1a9;
 }
+
+/* ==============================
+   Explorer 파일명 굵기 조정
+   ============================== */
+
+/* Explorer 전체를 조금 덜 무겁게 */
+.explorer {
+  font-weight: 400;
+}
+
+/* 폴더명은 살짝만 강조 */
+.explorer .folder-title,
+.explorer button {
+  font-weight: 600;
+}
+
+/* 파일명은 bold 제거 */
+.explorer a,
+.explorer .content,
+.explorer .folder-outer a {
+  font-weight: 400;
+}
+
+/* 현재 선택된 글도 너무 두껍지 않게 */
+.explorer a.active,
+.explorer .active {
+  font-weight: 500;
+}
+
+/* 파일명 색도 살짝 부드럽게 */
+.explorer a {
+  color: var(--darkgray);
+}
+
+/* hover 시에만 강조 */
+.explorer a:hover {
+  color: var(--secondary);
+}
