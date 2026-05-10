@@ -646,85 +646,109 @@ table {
 
 
 /* ==============================
-   최근 글 리스트 재정리
+   최근 글 피드 재정리
    ============================== */
 
 /*
-   "최근 글" 제목은 본문 h2 스타일을 그대로 따름.
-   아래 리스트만 회색 + 이탤릭 톤으로 낮춤.
+   "최근 글" 제목은 일반 h2처럼 유지.
 */
-.recent-posts {
+.recent-feed {
   margin-top: 3rem;
   padding-top: 1.2rem;
   border-top: 1px solid var(--lightgray);
 }
 
-.recent-posts > h2 {
+.recent-feed > h2 {
   margin-top: 0;
-  margin-bottom: 1.35rem;
+  margin-bottom: 1.25rem;
   color: var(--dark);
   font-style: normal;
 }
 
-/* 리스트 기본 형태 */
-.recent-post-list {
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
+/*
+   최근 글 리스트.
+   기존 ul/li 스타일과 충돌하지 않도록 별도 class 사용.
+*/
+.recent-feed-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
 }
 
 /*
-   한 줄 구성:
+   한 줄 구조:
    [최근 생성]  파일이름  날짜
 */
-.recent-post-item {
+.recent-feed-row {
   display: grid;
   grid-template-columns: max-content minmax(0, 1fr) max-content;
   column-gap: 0.75rem;
   align-items: baseline;
-  padding: 0.38rem 0;
+
+  padding: 0.42rem 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--lightgray) 65%, transparent);
+
+  text-decoration: none;
   font-style: italic;
 }
 
-/* [최근 생성] / [최근 수정] */
-.recent-post-label {
+/*
+   [최근 생성] / [최근 수정]
+   - 볼드
+   - 청록색
+   - 이탤릭
+*/
+.recent-feed-label {
   color: var(--secondary);
   font-weight: 700;
   font-style: italic;
   white-space: nowrap;
 }
 
-/* 파일이름 */
-.recent-post-title {
-  color: var(--gray);
+/*
+   파일이름
+   - 회색
+   - 이탤릭
+*/
+.recent-feed-title {
+  color: #7b8087;
   font-weight: 400;
   font-style: italic;
-  text-decoration: none;
   overflow-wrap: anywhere;
+  min-width: 0;
 }
 
-/* 파일이름 hover */
-.recent-post-title:hover {
-  color: var(--secondary);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-/* 날짜 */
-.recent-post-date {
-  color: color-mix(in srgb, var(--gray) 70%, var(--light) 30%);
+/*
+   날짜
+   - 더 연한 회색
+   - 더 작은 글씨
+   - 이탤릭
+*/
+.recent-feed-date {
+  color: #aeb4ba;
   font-size: 0.82rem;
   font-weight: 400;
   font-style: italic;
   white-space: nowrap;
 }
 
-/* 더보기 */
-.recent-post-more {
-  margin-top: 0.95rem;
+/*
+   hover 시 파일명만 살짝 강조.
+*/
+.recent-feed-row:hover .recent-feed-title {
+  color: var(--secondary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
-.recent-post-more summary {
+/*
+   더보기는 클릭 유도 가능하게 파스텔 블루.
+*/
+.recent-feed-more {
+  margin-top: 0.9rem;
+}
+
+.recent-feed-more summary {
   cursor: pointer;
   width: fit-content;
   color: #6fa8dc;
@@ -734,60 +758,60 @@ table {
   transition: color 0.15s ease, transform 0.15s ease;
 }
 
-.recent-post-more summary::-webkit-details-marker {
+.recent-feed-more summary::-webkit-details-marker {
   display: none;
 }
 
-.recent-post-more summary::before {
+.recent-feed-more summary::before {
   content: "▸ ";
 }
 
-.recent-post-more[open] summary::before {
+.recent-feed-more[open] summary::before {
   content: "▾ ";
 }
 
-.recent-post-more summary:hover {
+.recent-feed-more summary:hover {
   color: #4f91c9;
   transform: translateX(2px);
 }
 
-.recent-post-more .recent-post-list {
-  margin-top: 0.65rem;
+.recent-feed-more .recent-feed-list {
+  margin-top: 0.6rem;
 }
 
-/* 다크모드 */
-[saved-theme="dark"] .recent-post-label {
-  color: var(--secondary);
-}
-
-[saved-theme="dark"] .recent-post-title {
+/*
+   다크모드.
+*/
+[saved-theme="dark"] .recent-feed-title {
   color: #9aa1a9;
 }
 
-[saved-theme="dark"] .recent-post-title:hover {
+[saved-theme="dark"] .recent-feed-date {
+  color: #747c85;
+}
+
+[saved-theme="dark"] .recent-feed-row:hover .recent-feed-title {
   color: var(--secondary);
 }
 
-[saved-theme="dark"] .recent-post-date {
-  color: #7f8790;
-}
-
-[saved-theme="dark"] .recent-post-more summary {
+[saved-theme="dark"] .recent-feed-more summary {
   color: #8ab4e0;
 }
 
-[saved-theme="dark"] .recent-post-more summary:hover {
+[saved-theme="dark"] .recent-feed-more summary:hover {
   color: #a7c9ea;
 }
 
-/* 좁은 화면에서는 날짜를 다음 줄로 내려서 안 깨지게 함 */
+/*
+   좁은 화면에서는 날짜를 다음 줄로 내려서 깨짐 방지.
+*/
 @media all and (max-width: 48rem) {
-  .recent-post-item {
+  .recent-feed-row {
     grid-template-columns: max-content minmax(0, 1fr);
     row-gap: 0.15rem;
   }
 
-  .recent-post-date {
+  .recent-feed-date {
     grid-column: 2;
     justify-self: start;
   }

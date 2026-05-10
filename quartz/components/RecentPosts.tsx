@@ -87,19 +87,17 @@ function toRecentEvents(file: any): RecentEvent[] {
   return events
 }
 
-function renderRecentItems(events: RecentEvent[]) {
+function RecentRows({ events }: { events: RecentEvent[] }) {
   return (
-    <ul className="recent-post-list">
+    <div className="recent-feed-list">
       {events.map((event, index) => (
-        <li className="recent-post-item" key={`${event.type}-${event.slug}-${index}`}>
-          <span className={`recent-post-label ${event.type}`}>{event.label}</span>
-          <a className="recent-post-title" href={`/${event.slug}`}>
-            {event.title}
-          </a>
-          <span className="recent-post-date">{formatDate(event.date)}</span>
-        </li>
+        <a className="recent-feed-row" href={`/${event.slug}`} key={`${event.type}-${event.slug}-${index}`}>
+          <span className={`recent-feed-label ${event.type}`}>{event.label}</span>
+          <span className="recent-feed-title">{event.title}</span>
+          <time className="recent-feed-date">{formatDate(event.date)}</time>
+        </a>
       ))}
-    </ul>
+    </div>
   )
 }
 
@@ -121,15 +119,15 @@ const RecentPosts: QuartzComponent = ({ fileData, allFiles }: QuartzComponentPro
   const restEvents = events.slice(7)
 
   return (
-    <section className="recent-posts">
+    <section className="recent-feed">
       <h2>최근 글</h2>
 
-      {renderRecentItems(firstEvents)}
+      <RecentRows events={firstEvents} />
 
       {restEvents.length > 0 && (
-        <details className="recent-post-more">
+        <details className="recent-feed-more">
           <summary>더보기</summary>
-          {renderRecentItems(restEvents)}
+          <RecentRows events={restEvents} />
         </details>
       )}
     </section>
