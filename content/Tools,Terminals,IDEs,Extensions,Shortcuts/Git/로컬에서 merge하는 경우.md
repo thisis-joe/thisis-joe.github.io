@@ -5,7 +5,7 @@ git merge feature/login
 git push origin main
 ```
 - 협업에서 `main/master`에 직접 merge해서 원격에 push하는 일은 없지만,
-  로컬에선 혼자 작업하는 프로젝트면 PR 없이 로컬에서 합쳐도 됨.
+  로컬에선 혼자 작업하는 프로젝트면 PR 없이 로컬에서 합쳐도 됨
 ---
 ### 2. 작업 브랜치에 최신 main 내용을 가져올 때
 ```bash
