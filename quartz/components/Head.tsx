@@ -45,7 +45,7 @@ export default (() => {
 
     return (
       <head>
-        <title>{browserTitle}</title>
+        <title>동블</title>
         <meta charSet="utf-8" />
         {cfg.theme.cdnCaching && cfg.theme.fontOrigin === "googleFonts" && (
           <>
