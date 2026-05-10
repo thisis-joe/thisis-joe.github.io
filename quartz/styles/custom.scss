@@ -898,3 +898,31 @@ article:has(+ .recent-feed) > *:last-child {
     justify-self: start;
   }
 }
+
+/* ==============================
+   홈 본문 끝 구분선 제거
+   ============================== */
+
+/* 홈 본문과 최근 글 사이에 생기는 구분선 제거 */
+.center > hr,
+.center article + hr,
+.center .popover-hint + hr,
+.center article {
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+}
+
+/* article 마지막 요소 뒤에 생기는 선 제거 */
+.center article > *:last-child,
+.center article > ul:last-child,
+.center article > ol:last-child {
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+}
+
+/* 최근 글 직전의 선만 강제 제거 */
+.center:has(.recent-feed) > hr,
+.center:has(.recent-feed) article + hr,
+.center:has(.recent-feed) .popover-hint + hr {
+  display: none !important;
+}
