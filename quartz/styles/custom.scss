@@ -646,188 +646,6 @@ table {
 
 
 /* ==============================
-   최근 글 class 보정
-   ============================== */
-
-.recent-feed {
-  margin-top: 3rem;
-  padding-top: 1.2rem;
-  border-top: 1px solid var(--lightgray);
-}
-
-.recent-feed > h2 {
-  margin-top: 0;
-  margin-bottom: 1.25rem;
-  color: var(--dark);
-  font-style: normal;
-}
-
-.recent-feed-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.18rem;
-  margin: 0;
-  padding: 0;
-}
-
-.recent-feed-row {
-  display: grid;
-  grid-template-columns: max-content minmax(0, 1fr) max-content;
-  column-gap: 0.9rem;
-  align-items: baseline;
-  padding: 0.42rem 0;
-  border-bottom: 1px solid color-mix(in srgb, var(--lightgray) 65%, transparent);
-  font-style: italic;
-}
-
-.recent-feed-label {
-  color: var(--secondary);
-  font-weight: 700;
-  font-style: italic;
-  white-space: nowrap;
-}
-
-.recent-feed-title {
-  color: #7b8087;
-  font-weight: 400;
-  font-style: italic;
-  text-decoration: none;
-  min-width: 0;
-  overflow-wrap: anywhere;
-}
-
-.recent-feed-title:hover {
-  color: var(--secondary);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.recent-feed-date {
-  color: #aeb4ba;
-  font-size: 0.82rem;
-  font-weight: 400;
-  font-style: italic;
-  white-space: nowrap;
-}
-
-.recent-feed-more {
-  margin-top: 0.9rem;
-}
-
-.recent-feed-more summary {
-  cursor: pointer;
-  width: fit-content;
-  color: #6fa8dc;
-  font-weight: 600;
-  font-style: italic;
-  list-style: none;
-  transition: color 0.15s ease, transform 0.15s ease;
-}
-
-.recent-feed-more summary::-webkit-details-marker {
-  display: none;
-}
-
-.recent-feed-more summary::before {
-  content: "▸ ";
-}
-
-.recent-feed-more[open] summary::before {
-  content: "▾ ";
-}
-
-.recent-feed-more summary:hover {
-  color: #4f91c9;
-  transform: translateX(2px);
-}
-
-.recent-feed-more .recent-feed-list {
-  margin-top: 0.6rem;
-}
-
-[saved-theme="dark"] .recent-feed-title {
-  color: #9aa1a9;
-}
-
-[saved-theme="dark"] .recent-feed-date {
-  color: #747c85;
-}
-
-[saved-theme="dark"] .recent-feed-title:hover {
-  color: var(--secondary);
-}
-
-[saved-theme="dark"] .recent-feed-more summary {
-  color: #8ab4e0;
-}
-
-@media all and (max-width: 48rem) {
-  .recent-feed-row {
-    grid-template-columns: max-content minmax(0, 1fr);
-    row-gap: 0.15rem;
-  }
-
-  .recent-feed-date {
-    grid-column: 2;
-    justify-self: start;
-  }
-}
-
-/* ==============================
-   최근 글 위쪽 중복 구분선 제거
-   ============================== */
-
-.recent-feed {
-  border-top: none !important;
-  padding-top: 0 !important;
-}
-
-/* ==============================
-   최근 글 제목 구분선 제거
-   ============================== */
-
-/* 최근 글은 홈 전용 섹션이므로 h2 기본 border-bottom을 제거 */
-.recent-feed > h2 {
-  border-bottom: none !important;
-  padding-bottom: 0 !important;
-}
-
-/* 최근 글 섹션 자체의 위쪽 선도 제거 */
-.recent-feed {
-  border-top: none !important;
-}
-
-/* ==============================
-   최근 글 구분선 강제 제거
-   ============================== */
-
-/* RecentPosts 컴포넌트 자체의 위쪽 선 제거 */
-section.recent-feed,
-.recent-feed {
-  border-top: 0 !important;
-  border-block-start: 0 !important;
-  box-shadow: none !important;
-}
-
-/* 최근 글 제목 아래 선 제거 */
-section.recent-feed > h2,
-.recent-feed > h2,
-section.recent-feed h2,
-.recent-feed h2 {
-  border-bottom: 0 !important;
-  border-block-end: 0 !important;
-  box-shadow: none !important;
-  padding-bottom: 0 !important;
-}
-
-/* Quartz 기본 h2 스타일이 afterBody 쪽에도 먹는 경우까지 차단 */
-.after-body .recent-feed h2,
-.after-body .recent-feed > h2 {
-  border-bottom: 0 !important;
-  border-block-end: 0 !important;
-}
-
-/* ==============================
    홈 섹션 구분선/최근 글 간격 정리
    ============================== */
 
@@ -899,151 +717,184 @@ article > hr:last-child {
   display: none !important;
 }
 
+
 /* ==============================
-   최근 글 구분선 전체 제거 - 최종 강제
+   최근 글 최종 구조
    ============================== */
 
-/* 최근 글 섹션 위쪽 선 제거 */
-.center .recent-feed,
-.page .recent-feed,
-section.recent-feed,
+/*
+   article과 recent-feed 사이에 Quartz가 만든 선이 있으면 숨김.
+   최근 글 섹션 자체에서 제목 밑 선을 따로 만든다.
+*/
+article + .recent-feed,
 .recent-feed {
   border: 0 !important;
   border-top: 0 !important;
   border-bottom: 0 !important;
-  border-block-start: 0 !important;
-  border-block-end: 0 !important;
   box-shadow: none !important;
   padding-top: 0 !important;
-  margin-top: 1.4rem !important;
+  margin-top: 1.45rem !important;
 }
 
-/* 최근 글 제목 아래 선 제거 */
-.center .recent-feed > h2,
-.page .recent-feed > h2,
-section.recent-feed > h2,
-.recent-feed > h2,
-.recent-feed h2 {
+/*
+   최근 글 제목은 선 없이 제목만.
+*/
+.recent-feed-heading,
+.recent-feed > h2.recent-feed-heading,
+section.recent-feed > h2.recent-feed-heading {
   border: 0 !important;
   border-top: 0 !important;
   border-bottom: 0 !important;
-  border-block-start: 0 !important;
-  border-block-end: 0 !important;
   box-shadow: none !important;
-  padding-bottom: 0 !important;
-  margin-bottom: 0.85rem !important;
+  padding: 0 !important;
+  margin: 0 0 0.45rem 0 !important;
+  color: var(--dark);
+  font-style: normal;
 }
 
-/* 최근 글 리스트 전체 */
-.center .recent-feed-list,
-.page .recent-feed-list,
+/*
+   최근 글 제목 밑에만 선 하나 생성.
+*/
+.recent-feed-heading-line {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: var(--lightgray);
+  margin: 0 0 0.75rem 0;
+}
+
+/*
+   최근 글 리스트에는 구분선 없음.
+*/
 .recent-feed-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+  margin: 0;
+  padding: 0;
   border: 0 !important;
   box-shadow: none !important;
-  gap: 0.08rem !important;
 }
 
-/* 최근 글 각 행의 구분선 제거 */
-.center .recent-feed-row,
-.page .recent-feed-row,
 .recent-feed-row {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr) max-content;
+  column-gap: 0.85rem;
+  align-items: baseline;
+
+  padding: 0.18rem 0;
+  line-height: 1.35;
+  font-style: italic;
+
   border: 0 !important;
   border-top: 0 !important;
   border-bottom: 0 !important;
-  border-block-start: 0 !important;
-  border-block-end: 0 !important;
   box-shadow: none !important;
-  padding-top: 0.18rem !important;
-  padding-bottom: 0.18rem !important;
-  line-height: 1.32 !important;
 }
 
-/* 혹시 pseudo-element로 선이 생기는 경우까지 제거 */
-.recent-feed::before,
-.recent-feed::after,
-.recent-feed > h2::before,
-.recent-feed > h2::after,
-.recent-feed-row::before,
-.recent-feed-row::after {
-  display: none !important;
-  content: none !important;
+.recent-feed-label {
+  color: var(--secondary);
+  font-weight: 700;
+  font-style: italic;
+  white-space: nowrap;
+}
+
+.recent-feed-title {
+  color: #7b8087;
+  font-weight: 400;
+  font-style: italic;
+  text-decoration: none;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.recent-feed-title:hover {
+  color: var(--secondary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.recent-feed-date {
+  color: #aeb4ba;
+  font-size: 0.76rem;
+  font-weight: 400;
+  font-style: italic;
+  white-space: nowrap;
+}
+
+.recent-feed-more {
+  margin-top: 0.55rem;
   border: 0 !important;
 }
 
-/* 최근 글 앞뒤에 끼는 hr 제거 */
-.center hr:has(+ .recent-feed),
-.page hr:has(+ .recent-feed),
-article hr:has(+ .recent-feed),
-.recent-feed + hr,
-hr + .recent-feed {
-  display: none !important;
+.recent-feed-more summary {
+  cursor: pointer;
+  width: fit-content;
+  color: #6fa8dc;
+  font-weight: 600;
+  font-style: italic;
+  list-style: none;
+  transition: color 0.15s ease, transform 0.15s ease;
 }
 
-/* 최근 글 바로 앞 본문 마지막 요소의 하단선 제거 */
-article:has(+ .recent-feed) > *:last-child,
-.center:has(.recent-feed) article > *:last-child {
-  border-bottom: 0 !important;
-  box-shadow: none !important;
+.recent-feed-more summary::-webkit-details-marker {
+  display: none;
 }
 
-/* ==============================
-   최근 글 구분선 최종 정리
-   ============================== */
-
-/* 최근 글 섹션 위쪽 선 제거 */
-.recent-feed {
-  border-top: 0 !important;
-  border-block-start: 0 !important;
-  box-shadow: none !important;
-  padding-top: 0 !important;
-  margin-top: 1.4rem !important;
+.recent-feed-more summary::before {
+  content: "▸ ";
 }
 
-/* 최근 글 제목 아래 선은 유지 */
-.recent-feed > h2,
-section.recent-feed > h2 {
-  border-top: 0 !important;
-  border-bottom: 1px solid var(--lightgray) !important;
-  border-block-end: 1px solid var(--lightgray) !important;
-  box-shadow: none !important;
-
-  padding-bottom: 0.35rem !important;
-  margin-bottom: 0.8rem !important;
+.recent-feed-more[open] summary::before {
+  content: "▾ ";
 }
 
-/* 최근 글 리스트 각 행의 선은 제거 */
-.recent-feed-row {
-  border: 0 !important;
-  border-top: 0 !important;
-  border-bottom: 0 !important;
-  border-block-start: 0 !important;
-  border-block-end: 0 !important;
-  box-shadow: none !important;
-
-  padding-top: 0.18rem !important;
-  padding-bottom: 0.18rem !important;
-  line-height: 1.32 !important;
+.recent-feed-more summary:hover {
+  color: #4f91c9;
+  transform: translateX(2px);
 }
 
-/* 최근 글 리스트 자체 선 제거 */
-.recent-feed-list {
-  border: 0 !important;
-  box-shadow: none !important;
-  gap: 0.08rem !important;
+.recent-feed-more .recent-feed-list {
+  margin-top: 0.4rem;
 }
 
-/* 혹시 이전 CSS가 pseudo-element로 선을 만들면 제거 */
-.recent-feed::before,
-.recent-feed::after,
-.recent-feed-row::before,
-.recent-feed-row::after {
-  display: none !important;
-  content: none !important;
-  border: 0 !important;
-}
-
-/* 최근 글 바로 앞에 생기는 본문 끝 구분선 제거 */
+/*
+   본문 끝에 자동으로 생기는 hr 또는 border가 recent 앞에 보이면 제거.
+*/
+article hr:last-child,
+article > hr:last-child,
 article:has(+ .recent-feed) > *:last-child {
   border-bottom: 0 !important;
   box-shadow: none !important;
+}
+
+/*
+   다크모드
+*/
+[saved-theme="dark"] .recent-feed-title {
+  color: #9aa1a9;
+}
+
+[saved-theme="dark"] .recent-feed-date {
+  color: #747c85;
+}
+
+[saved-theme="dark"] .recent-feed-title:hover {
+  color: var(--secondary);
+}
+
+[saved-theme="dark"] .recent-feed-more summary {
+  color: #8ab4e0;
+}
+
+@media all and (max-width: 48rem) {
+  .recent-feed-row {
+    grid-template-columns: max-content minmax(0, 1fr);
+    row-gap: 0.12rem;
+  }
+
+  .recent-feed-date {
+    grid-column: 2;
+    justify-self: start;
+  }
 }

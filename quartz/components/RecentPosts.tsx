@@ -50,10 +50,6 @@ function isFolderLikePage(file: any, allFiles: any[]): boolean {
   if (slug === "index") return true
   if (slug.endsWith("/index")) return true
 
-  // 어떤 slug가 다른 글들의 상위 경로라면 폴더 페이지로 간주함.
-  // 예: slug = "Subjects"
-  //     다른 글 = "Subjects/JavaScript"
-  //     => Subjects는 폴더로 보고 최근 글에서 제외
   return allFiles.some((other) => {
     const otherSlug = String(other.slug ?? "")
     return otherSlug !== slug && otherSlug.startsWith(slug + "/")
@@ -112,11 +108,9 @@ function removeAdjacentDuplicateEvents(events: RecentEvent[]): RecentEvent[] {
     const previous = result[result.length - 1]
 
     if (previous && previous.slug === event.slug) {
-      // 같은 글의 최근 생성/최근 수정이 연속으로 붙으면 최근 생성만 남김.
       if (previous.type === "created" || event.type === "created") {
         result[result.length - 1] = previous.type === "created" ? previous : event
       }
-
       continue
     }
 
@@ -155,7 +149,6 @@ const RecentPosts: QuartzComponent = ({ fileData, allFiles }: QuartzComponentPro
 
       if (timeDiff !== 0) return timeDiff
 
-      // 시간이 같으면 최근 생성이 최근 수정보다 먼저 오게 함.
       if (a.type === "created" && b.type === "modified") return -1
       if (a.type === "modified" && b.type === "created") return 1
 
@@ -173,7 +166,8 @@ const RecentPosts: QuartzComponent = ({ fileData, allFiles }: QuartzComponentPro
 
   return (
     <section class="recent-feed">
-      <h2>최근 글</h2>
+      <h2 class="recent-feed-heading">최근 글</h2>
+      <div class="recent-feed-heading-line" />
 
       <RecentRows events={firstEvents} />
 
