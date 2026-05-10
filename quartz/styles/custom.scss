@@ -898,3 +898,146 @@ article hr:last-child,
 article > hr:last-child {
   display: none !important;
 }
+
+/* ==============================
+   최근 글 구분선 전체 제거 - 최종 강제
+   ============================== */
+
+/* 최근 글 섹션 위쪽 선 제거 */
+.center .recent-feed,
+.page .recent-feed,
+section.recent-feed,
+.recent-feed {
+  border: 0 !important;
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+  border-block-start: 0 !important;
+  border-block-end: 0 !important;
+  box-shadow: none !important;
+  padding-top: 0 !important;
+  margin-top: 1.4rem !important;
+}
+
+/* 최근 글 제목 아래 선 제거 */
+.center .recent-feed > h2,
+.page .recent-feed > h2,
+section.recent-feed > h2,
+.recent-feed > h2,
+.recent-feed h2 {
+  border: 0 !important;
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+  border-block-start: 0 !important;
+  border-block-end: 0 !important;
+  box-shadow: none !important;
+  padding-bottom: 0 !important;
+  margin-bottom: 0.85rem !important;
+}
+
+/* 최근 글 리스트 전체 */
+.center .recent-feed-list,
+.page .recent-feed-list,
+.recent-feed-list {
+  border: 0 !important;
+  box-shadow: none !important;
+  gap: 0.08rem !important;
+}
+
+/* 최근 글 각 행의 구분선 제거 */
+.center .recent-feed-row,
+.page .recent-feed-row,
+.recent-feed-row {
+  border: 0 !important;
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+  border-block-start: 0 !important;
+  border-block-end: 0 !important;
+  box-shadow: none !important;
+  padding-top: 0.18rem !important;
+  padding-bottom: 0.18rem !important;
+  line-height: 1.32 !important;
+}
+
+/* 혹시 pseudo-element로 선이 생기는 경우까지 제거 */
+.recent-feed::before,
+.recent-feed::after,
+.recent-feed > h2::before,
+.recent-feed > h2::after,
+.recent-feed-row::before,
+.recent-feed-row::after {
+  display: none !important;
+  content: none !important;
+  border: 0 !important;
+}
+
+/* 최근 글 앞뒤에 끼는 hr 제거 */
+.center hr:has(+ .recent-feed),
+.page hr:has(+ .recent-feed),
+article hr:has(+ .recent-feed),
+.recent-feed + hr,
+hr + .recent-feed {
+  display: none !important;
+}
+
+/* 최근 글 바로 앞 본문 마지막 요소의 하단선 제거 */
+article:has(+ .recent-feed) > *:last-child,
+.center:has(.recent-feed) article > *:last-child {
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+}
+
+/* ==============================
+   최근 글 구분선 최종 정리
+   ============================== */
+
+/* 최근 글 섹션 위쪽 선 제거 */
+.recent-feed {
+  border-top: 0 !important;
+  border-block-start: 0 !important;
+  box-shadow: none !important;
+  padding-top: 0 !important;
+  margin-top: 1.4rem !important;
+}
+
+/* 최근 글 제목 아래 선은 유지 */
+.recent-feed > h2,
+section.recent-feed > h2 {
+  border-top: 0 !important;
+  border-bottom: 1px solid var(--lightgray) !important;
+  border-block-end: 1px solid var(--lightgray) !important;
+  box-shadow: none !important;
+
+  padding-bottom: 0.35rem !important;
+  margin-bottom: 0.8rem !important;
+}
+
+/* 최근 글 리스트 각 행의 선은 제거 */
+.recent-feed-row {
+  border: 0 !important;
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+  border-block-start: 0 !important;
+  border-block-end: 0 !important;
+  box-shadow: none !important;
+
+  padding-top: 0.18rem !important;
+  padding-bottom: 0.18rem !important;
+  line-height: 1.32 !important;
+}
+
+/* 최근 글 리스트 자체 선 제거 */
+.recent-feed-list {
+  border: 0 !important;
+  box-shadow: none !important;
+  gap: 0.08rem !important;
+}
+
+/* 혹시 이전 CSS가 pseudo-element로 선을 만들면 제거 */
+.recent-feed::before,
+.recent-feed::after,
+.recent-feed-row::before,
+.recent-feed-row::after {
+  display: none !important;
+  content: none !important;
+  border: 0 !important;
+}
