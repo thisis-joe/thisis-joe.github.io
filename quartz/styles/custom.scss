@@ -564,48 +564,150 @@ article {
   color: var(--secondary);
 }
 
+
+/* ==============================
+   본문 확장 및 사이드바 축소
+   ============================== */
+
+/*
+   Quartz 기본 레이아웃에서 좌우 사이드바가 넓게 잡히는 문제를 줄이고,
+   본문 영역을 더 넓게 사용하도록 조정함.
+*/
+.page {
+  width: min(98vw, 94rem);
+  margin-inline: auto;
+  padding-inline: clamp(0.8rem, 1.5vw, 1.5rem);
+}
+
+/*
+   본문은 기존 ch 기준보다 넓게 잡음.
+   기술 글, 코드, 목록이 많은 블로그라 80ch 정도까지 허용.
+*/
+.center {
+  width: min(100%, 82ch);
+  max-width: 82ch;
+}
+
+/*
+   좌측 사이드바를 줄임.
+   Explorer가 너무 넓게 잡히지 않도록 제한.
+*/
+.left.sidebar {
+  flex: 0 0 clamp(10rem, 14vw, 15rem);
+  max-width: clamp(10rem, 14vw, 15rem);
+}
+
+/*
+   우측 목차는 더 작게.
+*/
+.right.sidebar {
+  flex: 0 0 clamp(6.5rem, 8vw, 9rem);
+  max-width: clamp(6.5rem, 8vw, 9rem);
+}
+
+/*
+   우측 목차 내부 간격도 줄임.
+*/
+.right.sidebar .toc {
+  font-size: 0.82rem;
+  line-height: 1.38;
+}
+
+.right.sidebar .toc h3 {
+  font-size: 0.86rem;
+  margin-bottom: 0.35rem;
+}
+
+.right.sidebar .toc ul {
+  padding-left: 0.6rem;
+}
+
+.right.sidebar .toc li {
+  margin: 0.12rem 0;
+}
+
+/*
+   본문 하단 구분선이 너무 길거나 어색하지 않게 본문 폭에 맞춤.
+*/
+article {
+  max-width: 100%;
+}
+
+/*
+   넓은 화면에서는 본문을 조금 더 넓힘.
+*/
+@media all and (min-width: 90rem) {
+  .page {
+    width: min(98vw, 100rem);
+  }
+
+  .center {
+    width: min(100%, 88ch);
+    max-width: 88ch;
+  }
+}
+
+/*
+   중간 이하 화면에서는 우측 목차를 숨겨 본문을 우선함.
+*/
+@media all and (max-width: 72rem) {
+  .right.sidebar {
+    display: none;
+  }
+
+  .center {
+    width: 100%;
+    max-width: none;
+  }
+}
+
 /* ==============================
    Explorer 홈 파일 숨김
    ============================== */
 
 /*
-   홈(index.md)이 Explorer에 Hello! 같은 항목으로 중복 표시되는 것을 숨김.
-   사이트 제목을 누르면 홈으로 이동할 수 있으므로 Explorer에서는 홈 항목을 보이지 않게 처리함.
+   홈(index.md)이 Explorer에 Hello!로 중복 표시되는 문제 방지.
+   사이트 제목인 "동균 블로그"가 이미 홈 링크 역할을 하므로 Explorer에서는 홈 항목을 숨김.
 */
 .explorer a[href="/"],
 .explorer a[href="./"],
+.explorer a[href="."],
 .explorer a[href="/index"],
+.explorer a[href="/index/"],
+.explorer a[href="./index"],
+.explorer a[href="./index/"],
 .explorer a[href="/Hello!"],
-.explorer a[href="/Hello%21"] {
-  display: none;
+.explorer a[href="/Hello%21"],
+.explorer a[href="./Hello!"],
+.explorer a[href="./Hello%21"] {
+  display: none !important;
 }
 
-/* ==============================
-   오른쪽 목차 영역 축소
-   ============================== */
-
-/* 우측 사이드바 폭을 과하게 차지하지 않도록 줄임 */
-.right.sidebar {
-  flex: 0 1 clamp(7.5rem, 9vw, 11rem);
-  max-width: clamp(7.5rem, 9vw, 11rem);
+/*
+   브라우저가 href를 상대 경로로 만들었을 때까지 대응.
+*/
+.explorer li:has(a[href="/"]),
+.explorer li:has(a[href="./"]),
+.explorer li:has(a[href="."]),
+.explorer li:has(a[href="/index"]),
+.explorer li:has(a[href="/index/"]),
+.explorer li:has(a[href="./index"]),
+.explorer li:has(a[href="./index/"]),
+.explorer li:has(a[href="/Hello!"]),
+.explorer li:has(a[href="/Hello%21"]),
+.explorer li:has(a[href="./Hello!"]),
+.explorer li:has(a[href="./Hello%21"]) {
+  display: none !important;
 }
 
-/* 목차 자체도 조금 더 조밀하게 */
-.right.sidebar .toc {
-  font-size: 0.86rem;
-  line-height: 1.45;
+/*
+   Explorer 파일명 굵기 완화.
+*/
+.explorer a {
+  font-weight: 400 !important;
 }
 
-/* 목차 제목 */
-.right.sidebar .toc h3 {
-  font-size: 0.9rem;
-}
-
-/* 목차 항목 간격 축소 */
-.right.sidebar .toc ul {
-  padding-left: 0.75rem;
-}
-
-.right.sidebar .toc li {
-  margin: 0.15rem 0;
+.explorer button,
+.explorer .folder-title {
+  font-weight: 600 !important;
 }
