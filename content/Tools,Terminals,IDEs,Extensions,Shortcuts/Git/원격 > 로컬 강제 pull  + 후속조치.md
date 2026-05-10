@@ -3,8 +3,6 @@
 git fetch --all #원격의 모든 내용 업데이트. pull 아님. 실제 내 작업 파일을 바꾸지 않음. 원격의 브랜치정보(추가,삭제,변경,등)도 업데이트 됨.
 git reset --hard origin/main #현재 로컬 브랜치를 원격 main(본인선택) 브랜치 상태로 강제로 맞춤. 커밋되지 않은 로컬 변경사항은 사라짐.
 ```
-* *설명*
-	* 
 * *참고
 	* *git fetch는 어떤 브랜치에서 해도 동일합니다.
 	* *git reset --hard origin/main 에서 origin과 main이 뭔가요
