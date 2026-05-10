@@ -796,3 +796,33 @@ table {
 .recent-feed {
   border-top: none !important;
 }
+
+/* ==============================
+   최근 글 구분선 강제 제거
+   ============================== */
+
+/* RecentPosts 컴포넌트 자체의 위쪽 선 제거 */
+section.recent-feed,
+.recent-feed {
+  border-top: 0 !important;
+  border-block-start: 0 !important;
+  box-shadow: none !important;
+}
+
+/* 최근 글 제목 아래 선 제거 */
+section.recent-feed > h2,
+.recent-feed > h2,
+section.recent-feed h2,
+.recent-feed h2 {
+  border-bottom: 0 !important;
+  border-block-end: 0 !important;
+  box-shadow: none !important;
+  padding-bottom: 0 !important;
+}
+
+/* Quartz 기본 h2 스타일이 afterBody 쪽에도 먹는 경우까지 차단 */
+.after-body .recent-feed h2,
+.after-body .recent-feed > h2 {
+  border-bottom: 0 !important;
+  border-block-end: 0 !important;
+}
