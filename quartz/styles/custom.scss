@@ -772,3 +772,12 @@ table {
     justify-self: start;
   }
 }
+
+/* ==============================
+   최근 글 위쪽 중복 구분선 제거
+   ============================== */
+
+.recent-feed {
+  border-top: none !important;
+  padding-top: 0 !important;
+}
