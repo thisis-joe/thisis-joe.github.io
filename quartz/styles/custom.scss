@@ -403,53 +403,45 @@ footer {
 
 
 /* ==============================
-   Quartz Grid 레이아웃 비율 조정
+   우측 목차 확장 및 grid 재조정
    ============================== */
 
 /*
-   Quartz의 페이지 레이아웃은 flex가 아니라 grid 기반임.
-   따라서 좌측/본문/우측 폭은 flex가 아니라 grid-template-columns로 잡아야 안정적으로 반영됨.
+   Quartz는 page 영역이 grid 기반이라,
+   좌측/본문/우측 폭은 grid-template-columns에서 직접 잡는 게 가장 안정적임.
 */
 .page {
-  width: min(98vw, 118rem);
+  width: min(98vw, 132rem);
   margin-inline: auto;
-  padding-inline: clamp(0.8rem, 1.4vw, 1.6rem);
+  padding-inline: clamp(0.8rem, 1.3vw, 1.6rem);
 
   /*
-     좌측: 파일명이 길 수 있으므로 넉넉하게
-     본문: 남는 공간을 가장 많이 사용
-     우측: 목차가 잘리지 않을 정도만 확보
+    좌측: 파일명이 길 수 있어서 넉넉하게
+    본문: 남는 공간 대부분 사용
+    우측: 목차가 잘리지 않도록 충분히 확보
   */
   grid-template-columns:
-    minmax(18rem, 22rem)
+    minmax(19rem, 24rem)
     minmax(0, 1fr)
-    minmax(12rem, 15rem) !important;
+    minmax(17rem, 22rem) !important;
 
-  column-gap: clamp(2rem, 3vw, 4rem);
+  column-gap: clamp(2rem, 2.8vw, 4rem);
 }
 
-/*
-   본문은 grid 가운데 칸을 충분히 사용하되,
-   너무 긴 줄이 되지 않도록 글자 수 기준으로 제한함.
-*/
+/* 본문은 가운데 grid 칸을 최대한 사용 */
 .center {
   width: 100%;
-  max-width: 96ch;
+  max-width: 98ch;
   min-width: 0;
 }
 
-/*
-   article 내부도 부모 폭을 온전히 사용.
-*/
 article {
   width: 100%;
   max-width: 100%;
   min-width: 0;
 }
 
-/*
-   좌측 Explorer는 긴 파일명도 적당히 보이게 함.
-*/
+/* 좌측 탐색기 */
 .left.sidebar {
   width: 100%;
   min-width: 0;
@@ -468,10 +460,6 @@ article {
   word-break: keep-all;
 }
 
-/*
-   파일명은 과하게 굵지 않게.
-   폴더명만 살짝 강조.
-*/
 .explorer a {
   font-weight: 400 !important;
 }
@@ -481,57 +469,62 @@ article {
   font-weight: 600 !important;
 }
 
-/*
-   우측 목차는 잘리지 않게 폭을 확보하고,
-   너무 좁게 줄바꿈되지 않도록 처리함.
-*/
+/* 우측 목차 영역을 grid 칸 전체에 가깝게 사용 */
 .right.sidebar {
   width: 100%;
   min-width: 0;
-  max-width: none;
+  max-width: none !important;
+  overflow: visible;
 }
 
-.right.sidebar .toc {
+/* TOC 내부 폭 제한 제거 */
+.right.sidebar .toc,
+.right.sidebar .toc-content,
+.right.sidebar nav,
+.right.sidebar ul {
   width: 100%;
-  max-width: none;
-  font-size: 0.86rem;
+  max-width: none !important;
+  overflow: visible;
+}
+
+/* 목차 텍스트가 한 글자씩 잘리지 않도록 처리 */
+.right.sidebar .toc a,
+.right.sidebar .toc li {
+  display: block;
+  white-space: normal;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  text-overflow: unset;
+  overflow: visible;
+}
+
+/* 목차는 약간 조밀하게 */
+.right.sidebar .toc {
+  font-size: 0.88rem;
   line-height: 1.48;
 }
 
-/*
-   목차 항목이 한 글자씩 이상하게 잘리지 않도록 함.
-*/
-.right.sidebar .toc a,
-.right.sidebar .toc li {
-  word-break: keep-all;
-  overflow-wrap: anywhere;
-}
-
 .right.sidebar .toc h3 {
-  font-size: 0.9rem;
-  margin-bottom: 0.4rem;
+  font-size: 0.92rem;
+  margin-bottom: 0.45rem;
 }
 
 .right.sidebar .toc ul {
-  padding-left: 0.75rem;
+  padding-left: 0.85rem;
 }
 
 .right.sidebar .toc li {
-  margin: 0.16rem 0;
+  margin: 0.18rem 0;
 }
 
-/*
-   코드블록은 본문 폭 안에서 자연스럽게 스크롤.
-*/
+/* 코드블록과 표는 본문 안에서만 가로 스크롤 */
 pre,
 table {
   max-width: 100%;
   overflow-x: auto;
 }
 
-/*
-   그래프뷰는 좌측 하단에서 작게 유지.
-*/
+/* 그래프뷰는 좌측 하단에서 작게 유지 */
 .left.sidebar .graph {
   margin-top: 1.3rem;
   max-height: min(13rem, 22vh);
@@ -544,15 +537,15 @@ table {
 }
 
 /*
-   아주 넓은 화면에서는 좌측과 본문을 조금 더 넓힘.
+   넓은 화면에서는 좌측과 우측을 더 확보.
 */
 @media all and (min-width: 105rem) {
   .page {
-    width: min(98vw, 128rem);
+    width: min(98vw, 144rem);
     grid-template-columns:
-      minmax(20rem, 25rem)
+      minmax(21rem, 27rem)
       minmax(0, 1fr)
-      minmax(13rem, 16rem) !important;
+      minmax(18rem, 24rem) !important;
   }
 
   .center {
@@ -561,14 +554,13 @@ table {
 }
 
 /*
-   중간 화면에서는 우측 목차를 먼저 숨김.
-   본문과 좌측 탐색기를 우선함.
+   중간 화면에서는 우측 목차를 먼저 숨겨 본문과 좌측 탐색기를 살림.
 */
-@media all and (max-width: 82rem) {
+@media all and (max-width: 86rem) {
   .page {
     width: 100%;
     grid-template-columns:
-      minmax(15rem, 19rem)
+      minmax(16rem, 21rem)
       minmax(0, 1fr) !important;
   }
 
@@ -577,12 +569,12 @@ table {
   }
 
   .center {
-    max-width: 92ch;
+    max-width: 96ch;
   }
 }
 
 /*
-   좁은 화면에서는 본문을 최우선.
+   좁은 화면에서는 본문 우선.
 */
 @media all and (max-width: 58rem) {
   .page {
@@ -597,15 +589,5 @@ table {
 
   .left.sidebar .graph {
     display: none;
-  }
-}
-
-/*
-   모바일에서는 Quartz 기본 모바일 동작을 최대한 방해하지 않음.
-*/
-@media all and (max-width: 48rem) {
-  article {
-    font-size: 1rem;
-    line-height: 1.72;
   }
 }
