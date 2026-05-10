@@ -1,3 +1,9 @@
+---
+title: 로컬에서 merge하는 경우
+created: 2026-05-11T01:18:20+09:00
+updated: 2026-05-11T03:18:25+09:00
+---
+
 ### 1. 개인 프로젝트에서 기능 브랜치를 main에 합칠 때
 ```bash
 git checkout main

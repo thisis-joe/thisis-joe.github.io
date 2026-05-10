@@ -1,3 +1,9 @@
+---
+title: 자주쓰는 fetch 옵션
+created: 2026-05-11T01:18:20+09:00
+updated: 2026-05-11T01:18:20+09:00
+---
+
 ### -p
 ```bash
 git fetch -p origin
