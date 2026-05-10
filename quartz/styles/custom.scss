@@ -1041,3 +1041,9 @@ section.recent-feed > h2 {
   content: none !important;
   border: 0 !important;
 }
+
+/* 최근 글 바로 앞에 생기는 본문 끝 구분선 제거 */
+article:has(+ .recent-feed) > *:last-child {
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+}
