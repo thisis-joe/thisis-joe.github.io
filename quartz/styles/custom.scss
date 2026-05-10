@@ -743,3 +743,73 @@ table {
     gap: 0.2rem;
   }
 }
+
+/* ==============================
+   최근 글 리스트 톤 다운
+   ============================== */
+
+/* 최근 글 섹션의 큰 제목은 그대로 유지 */
+.recent-posts > h2 {
+  color: var(--dark);
+  font-style: normal;
+}
+
+/* [최근 생성], [최근 수정] 머리말 */
+.recent-post-tabs h3 {
+  color: var(--gray);
+  font-style: italic;
+  font-weight: 500;
+}
+
+/* 최근 글 리스트 전체를 본문보다 한 톤 낮춤 */
+.recent-post-list {
+  color: var(--gray);
+  font-style: italic;
+}
+
+/* 최근 글 제목 링크 */
+.recent-post-list a {
+  color: var(--gray);
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* hover 시에만 살짝 강조 */
+.recent-post-list a:hover {
+  color: var(--secondary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* 날짜도 회색 + 이탤릭 */
+.recent-post-list span {
+  color: var(--gray);
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* 더보기 버튼도 같은 톤 */
+.recent-post-more summary {
+  color: var(--gray);
+  font-style: italic;
+  font-weight: 500;
+}
+
+.recent-post-more summary::after {
+  color: var(--gray);
+  font-style: italic;
+}
+
+/* 다크모드에서도 너무 밝지 않게 */
+[saved-theme="dark"] .recent-post-tabs h3,
+[saved-theme="dark"] .recent-post-list,
+[saved-theme="dark"] .recent-post-list a,
+[saved-theme="dark"] .recent-post-list span,
+[saved-theme="dark"] .recent-post-more summary,
+[saved-theme="dark"] .recent-post-more summary::after {
+  color: #9aa1a9;
+}
+
+[saved-theme="dark"] .recent-post-list a:hover {
+  color: var(--secondary);
+}
