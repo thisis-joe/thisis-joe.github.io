@@ -826,3 +826,75 @@ section.recent-feed h2,
   border-bottom: 0 !important;
   border-block-end: 0 !important;
 }
+
+/* ==============================
+   홈 섹션 구분선/최근 글 간격 정리
+   ============================== */
+
+/* 최근 글 섹션 위쪽에 생기는 불필요한 구분선 제거 */
+.recent-feed,
+section.recent-feed {
+  border-top: 0 !important;
+  border-block-start: 0 !important;
+  padding-top: 0 !important;
+  margin-top: 1.6rem !important;
+}
+
+/* 최근 글 제목은 h2처럼 보이되, 제목 밑 구분선은 유지 */
+.recent-feed > h2,
+section.recent-feed > h2 {
+  margin-top: 0 !important;
+  margin-bottom: 0.65rem !important;
+  padding-bottom: 0.35rem !important;
+  border-bottom: 1px solid var(--lightgray) !important;
+  border-block-end: 1px solid var(--lightgray) !important;
+}
+
+/* 최근 글 바로 앞 본문 요소가 여백을 과하게 만들지 않게 조정 */
+article > *:last-child {
+  margin-bottom: 1rem !important;
+}
+
+/* 최근 글 리스트 줄 간격 축소 */
+.recent-feed-list {
+  gap: 0 !important;
+}
+
+/* 최근 글 한 줄 높이 축소 */
+.recent-feed-row {
+  padding: 0.22rem 0 !important;
+  min-height: 0 !important;
+  line-height: 1.35 !important;
+  border-bottom: 1px solid color-mix(in srgb, var(--lightgray) 55%, transparent) !important;
+}
+
+/* [최근 생성] / [최근 수정] */
+.recent-feed-label {
+  line-height: 1.35 !important;
+}
+
+/* 파일명 */
+.recent-feed-title {
+  line-height: 1.35 !important;
+}
+
+/* 날짜는 더 작고 조용하게 */
+.recent-feed-date {
+  font-size: 0.76rem !important;
+  line-height: 1.35 !important;
+}
+
+/* 더보기와 리스트 사이 간격 축소 */
+.recent-feed-more {
+  margin-top: 0.55rem !important;
+}
+
+.recent-feed-more .recent-feed-list {
+  margin-top: 0.4rem !important;
+}
+
+/* 홈 본문 안에 마지막 hr이 생긴 경우 제거 */
+article hr:last-child,
+article > hr:last-child {
+  display: none !important;
+}
