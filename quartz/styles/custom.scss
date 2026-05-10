@@ -906,3 +906,39 @@ section.recent-feed > h2.recent-feed-heading {
     justify-self: start;
   }
 }
+
+/* ==============================
+   홈 본문과 최근 글 사이 중간선 제거
+   ============================== */
+
+/* 홈 본문 article 끝에 생기는 선 제거 */
+article.popover-hint {
+  border-bottom: none !important;
+  border-block-end: none !important;
+  box-shadow: none !important;
+}
+
+/* article 내부 마지막 요소 뒤에 생기는 선 제거 */
+article.popover-hint > *:last-child {
+  border-bottom: none !important;
+  border-block-end: none !important;
+  box-shadow: none !important;
+}
+
+/* 최근 글 바로 앞에 있는 hr 제거 */
+article.popover-hint + hr,
+article.popover-hint ~ hr,
+.center > hr,
+.center hr {
+  display: none !important;
+  border: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* 홈 화면에서 article과 recent 사이 여백만 자연스럽게 유지 */
+article.popover-hint + .recent-feed,
+.recent-feed {
+  margin-top: 1.4rem !important;
+}
