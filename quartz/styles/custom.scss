@@ -479,12 +479,15 @@ article {
 
 /* TOC 내부 폭 제한 제거 */
 .right.sidebar .toc,
+.right.sidebar nav {
+  width: 100%;
+  max-width: none !important;
+}
+
 .right.sidebar .toc-content,
-.right.sidebar nav,
 .right.sidebar ul {
   width: 100%;
   max-width: none !important;
-  overflow: visible;
 }
 
 /* 목차 텍스트가 한 글자씩 잘리지 않도록 처리 */
@@ -590,4 +593,53 @@ table {
   .left.sidebar .graph {
     display: none;
   }
+}
+
+
+/* ==============================
+   TOC 토글 동작 복구
+   ============================== */
+
+/*
+   목차가 잘리지 않게 하려고 overflow: visible을 강제하면
+   Quartz의 접기/펼치기 토글이 먹지 않을 수 있음.
+   우측 사이드바 자체는 보이게 두되, 목차 내부 컨텐츠는 Quartz 기본 토글 동작을 따르게 함.
+*/
+.right.sidebar {
+  overflow: visible;
+}
+
+.right.sidebar .toc {
+  width: 100%;
+  max-width: none !important;
+}
+
+/*
+   토글되는 실제 내용 영역에는 overflow: visible을 강제하지 않음.
+   그래야 접기 상태에서 목차가 정상적으로 숨겨짐.
+*/
+.right.sidebar .toc-content,
+.right.sidebar .toc ul {
+  max-width: none !important;
+}
+
+/*
+   목차 텍스트 줄바꿈은 유지하되,
+   토글 표시/숨김 동작은 방해하지 않음.
+*/
+.right.sidebar .toc a,
+.right.sidebar .toc li {
+  white-space: normal;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  text-overflow: unset;
+}
+
+/*
+   Quartz가 aria-expanded 또는 collapsed 클래스로 접기 상태를 표시하는 경우를 보정.
+*/
+.right.sidebar button[aria-expanded="false"] ~ .toc-content,
+.right.sidebar .collapsed .toc-content,
+.right.sidebar .toc.collapsed .toc-content {
+  display: none;
 }
