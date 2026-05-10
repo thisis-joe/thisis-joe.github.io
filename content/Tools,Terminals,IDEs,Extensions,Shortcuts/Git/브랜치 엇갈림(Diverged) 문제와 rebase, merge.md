@@ -1,7 +1,7 @@
 ---
-title: 브랜치 엇갈림(Diverged) 문제와 rebase, merge
+title: "브랜치 엇갈림(Diverged) 문제와 rebase, merge"
 created: 2026-05-11T02:02:29+09:00
-updated: 2026-05-11T02:02:29+09:00
+updated: 2026-05-11T03:26:56+09:00
 ---
 
 ### Diverged?
