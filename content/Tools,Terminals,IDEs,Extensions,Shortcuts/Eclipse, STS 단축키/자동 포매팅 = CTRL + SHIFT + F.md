@@ -1,7 +1,0 @@
----
-title: "자동 포매팅 = CTRL + SHIFT + F"
-created: 2026-01-29T10:20:11+09:00
-updated: 2026-05-11T03:26:56+09:00
----
-
-[[ShortCuts]]
