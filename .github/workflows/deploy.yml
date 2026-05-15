@@ -28,14 +28,14 @@ jobs:
     steps:
       # main 브랜치의 Quartz 블로그 코드 가져오기
       - name: Checkout blog source
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           ref: main
           fetch-depth: 0
 
       # auto-sync 브랜치의 글 콘텐츠 가져오기
       - name: Checkout synced contents
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           ref: auto-sync
           path: synced-content
@@ -49,7 +49,7 @@ jobs:
 
       # Quartz는 Node 22 이상이 필요함
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: 22
 
@@ -63,7 +63,7 @@ jobs:
 
       # GitHub Pages에 올릴 public 폴더 업로드
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: public
 
@@ -80,4 +80,4 @@ jobs:
       # public 폴더를 GitHub Pages에 배포
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
