@@ -1,6 +1,9 @@
 import { QuartzConfig } from "./quartz/cfg"
 import * as Plugin from "./quartz/plugins"
 
+const umamiWebsiteId = process.env.UMAMI_WEBSITE_ID
+const umamiHost = process.env.UMAMI_HOST
+
 /**
  * Quartz 4 Configuration
  *
@@ -12,7 +15,13 @@ const config: QuartzConfig = {
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
-    analytics: null,
+    analytics: umamiWebsiteId
+      ? {
+          provider: "umami",
+          websiteId: umamiWebsiteId,
+          ...(umamiHost ? { host: umamiHost } : {}),
+        }
+      : null,
     locale: "ko-KR",
     baseUrl: "thisis-joe.github.io",
     ignorePatterns: ["private", "templates", ".obsidian"],
@@ -21,32 +30,32 @@ const config: QuartzConfig = {
       fontOrigin: "googleFonts",
       cdnCaching: true,
       typography: {
-        header: "Schibsted Grotesk",
-        body: "Source Sans Pro",
+        header: "Noto Sans KR",
+        body: "Noto Sans KR",
         code: "IBM Plex Mono",
       },
       colors: {
         lightMode: {
-          light: "#faf8f8",
-          lightgray: "#e5e5e5",
-          gray: "#b8b8b8",
-          darkgray: "#4e4e4e",
-          dark: "#2b2b2b",
-          secondary: "#2f5d62",
-          tertiary: "#5e8b7e",
-          highlight: "rgba(47, 93, 98, 0.12)",
-          textHighlight: "#fff23688",
+          light: "#ffffff",
+          lightgray: "#e5e7eb",
+          gray: "#9ca3af",
+          darkgray: "#4b5563",
+          dark: "#111827",
+          secondary: "#2563eb",
+          tertiary: "#0f766e",
+          highlight: "rgba(37, 99, 235, 0.09)",
+          textHighlight: "#fef3c788",
         },
         darkMode: {
-          light: "#161618",
-          lightgray: "#393639",
-          gray: "#646464",
-          darkgray: "#d4d4d4",
-          dark: "#ebebec",
-          secondary: "#2f5d62",
-          tertiary: "#5e8b7e",
-	  highlight: "rgba(47, 93, 98, 0.12)",
-          textHighlight: "#b3aa0288",
+          light: "#111827",
+          lightgray: "#374151",
+          gray: "#6b7280",
+          darkgray: "#d1d5db",
+          dark: "#f9fafb",
+          secondary: "#93c5fd",
+          tertiary: "#5eead4",
+          highlight: "rgba(147, 197, 253, 0.14)",
+          textHighlight: "#92400e88",
         },
       },
     },

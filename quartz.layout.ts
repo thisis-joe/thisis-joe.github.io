@@ -1,16 +1,51 @@
 import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
 
+const giscusRepo = process.env.GISCUS_REPO as `${string}/${string}` | undefined
+const giscusRepoId = process.env.GISCUS_REPO_ID
+const giscusCategory = process.env.GISCUS_CATEGORY
+const giscusCategoryId = process.env.GISCUS_CATEGORY_ID
+
+const comments =
+  giscusRepo && giscusRepoId && giscusCategory && giscusCategoryId
+    ? [
+        Component.ConditionalRender({
+          component: Component.Comments({
+            provider: "giscus",
+            options: {
+              repo: giscusRepo,
+              repoId: giscusRepoId,
+              category: giscusCategory,
+              categoryId: giscusCategoryId,
+              mapping: "pathname",
+              strict: true,
+              reactionsEnabled: true,
+              inputPosition: "bottom",
+              lang: "ko",
+            },
+          }),
+          condition: ({ fileData }) => {
+            const slug = String(fileData.slug ?? "")
+            return slug !== "" && slug !== "index" && !slug.startsWith("tags/")
+          },
+        }),
+      ]
+    : []
+
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
   afterBody: [
-    Component.RecentPosts(),],
+    Component.RecentPosts(),
+    Component.FeaturedPosts(),
+    Component.RelatedPosts(),
+    ...comments,
+  ],
   footer: Component.Footer({
     links: {
-      GitHub: "https://github.com/jackyzha0/quartz",
-      "Discord Community": "https://discord.gg/cRFFHYye7t",
+      GitHub: "https://github.com/thisis-joe/thisis-joe.github.io",
+      RSS: "https://thisis-joe.github.io/index.xml",
     },
   }),
 }
@@ -40,12 +75,8 @@ export const defaultContentPageLayout: PageLayout = {
       ],
     }),
     Component.Explorer(),
-    Component.DesktopOnly(Component.Graph()),
   ],
-  right: [
-    Component.DesktopOnly(Component.TableOfContents()),
-    Component.Backlinks(),
-  ],
+  right: [Component.DesktopOnly(Component.TableOfContents()), Component.Backlinks()],
 }
 
 // components for pages that display lists of pages  (e.g. tags or folders)
@@ -64,7 +95,6 @@ export const defaultListPageLayout: PageLayout = {
       ],
     }),
     Component.Explorer(),
-    Component.DesktopOnly(Component.Graph()),
   ],
   right: [],
 }

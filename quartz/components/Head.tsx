@@ -35,17 +35,15 @@ export default (() => {
       (e) => e.name === CustomOgImagesEmitterName,
     )
     const ogImageDefaultPath = `https://${cfg.baseUrl}/static/og-image.png`
-   
-   
+
     const filePath = fileData.filePath ?? ""
     const rawFileName = filePath.split("/").pop()?.replace(/\.md$/, "") ?? "Home"
     const pageName = rawFileName === "index" ? "Home" : rawFileName
     const browserTitle = pageName === "Home" ? "동블" : `동블 - ${pageName}`
-    
 
     return (
       <head>
-        <title>동블</title>
+        <title>{browserTitle}</title>
         <meta charSet="utf-8" />
         {cfg.theme.cdnCaching && cfg.theme.fontOrigin === "googleFonts" && (
           <>
