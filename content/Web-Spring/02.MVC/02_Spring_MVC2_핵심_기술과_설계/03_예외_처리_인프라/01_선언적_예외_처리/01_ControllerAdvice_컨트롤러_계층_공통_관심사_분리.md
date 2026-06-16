@@ -1,7 +1,7 @@
 ---
 title: 01_ControllerAdvice_컨트롤러_계층_공통_관심사_분리
 created: 2026-05-14T00:02:29+09:00
-updated: 2026-06-16T19:33:35+09:00
+updated: 2026-06-16T19:36:48+09:00
 ---
 
 # @ControllerAdvice: 컨트롤러 계층 공통 관심사 분리(AOP)

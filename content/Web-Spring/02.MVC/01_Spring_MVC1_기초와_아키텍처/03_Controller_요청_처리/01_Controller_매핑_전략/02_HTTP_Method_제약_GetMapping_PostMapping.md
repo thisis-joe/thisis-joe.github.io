@@ -1,7 +1,7 @@
 ---
 title: 02_HTTP_Method_제약_GetMapping_PostMapping
 created: 2026-05-14T00:02:29+09:00
-updated: 2026-06-16T19:33:35+09:00
+updated: 2026-06-16T19:36:48+09:00
 ---
 
 # HTTP Method 제약: @GetMapping, @PostMapping 활용 권장

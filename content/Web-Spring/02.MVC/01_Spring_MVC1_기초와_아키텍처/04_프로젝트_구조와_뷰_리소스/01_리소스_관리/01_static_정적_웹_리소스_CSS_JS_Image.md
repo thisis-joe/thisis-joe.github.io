@@ -1,7 +1,7 @@
 ---
 title: 01_static_정적_웹_리소스_CSS_JS_Image
 created: 2026-05-14T00:02:29+09:00
-updated: 2026-06-16T19:33:35+09:00
+updated: 2026-06-16T19:36:48+09:00
 ---
 
 # static: 정적 웹 리소스 (CSS, JS, Image)

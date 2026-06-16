@@ -1,7 +1,7 @@
 ---
 title: 01_RedirectAttributes_리다이렉트_시_데이터_소실_방지
 created: 2026-05-14T00:02:29+09:00
-updated: 2026-06-16T19:33:35+09:00
+updated: 2026-06-16T19:36:48+09:00
 ---
 
 # RedirectAttributes: 리다이렉트 시 데이터 소실 방지

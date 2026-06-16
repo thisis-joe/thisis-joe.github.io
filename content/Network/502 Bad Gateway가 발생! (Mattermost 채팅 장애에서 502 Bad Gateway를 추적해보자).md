@@ -1,7 +1,7 @@
 ---
 title: 502 Bad Gateway가 발생! (Mattermost 채팅 장애에서 502 Bad Gateway를 추적해보자)
 created: 2026-06-16T19:33:35+09:00
-updated: 2026-06-16T19:33:35+09:00
+updated: 2026-06-16T19:36:48+09:00
 ---
 
 ## 1. 문제 상황

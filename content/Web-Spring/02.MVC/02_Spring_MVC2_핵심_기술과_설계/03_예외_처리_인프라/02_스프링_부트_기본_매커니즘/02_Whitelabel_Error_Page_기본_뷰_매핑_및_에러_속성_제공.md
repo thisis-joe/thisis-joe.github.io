@@ -1,7 +1,7 @@
 ---
 title: 02_Whitelabel_Error_Page_기본_뷰_매핑_및_에러_속성_제공
 created: 2026-05-14T00:02:29+09:00
-updated: 2026-06-16T19:33:35+09:00
+updated: 2026-06-16T19:36:48+09:00
 ---
 
 # Whitelabel Error Page: 기본 뷰 매핑 및 에러 속성 제공

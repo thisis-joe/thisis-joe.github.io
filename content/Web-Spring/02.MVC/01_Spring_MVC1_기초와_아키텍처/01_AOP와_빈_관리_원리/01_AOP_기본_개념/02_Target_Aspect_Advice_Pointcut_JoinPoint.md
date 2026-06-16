@@ -1,7 +1,7 @@
 ---
 title: 02_Target_Aspect_Advice_Pointcut_JoinPoint
 created: 2026-05-14T00:02:29+09:00
-updated: 2026-06-16T19:33:35+09:00
+updated: 2026-06-16T19:36:48+09:00
 ---
 
 # 구성 요소: Target, Aspect, Advice, Pointcut, JoinPoint

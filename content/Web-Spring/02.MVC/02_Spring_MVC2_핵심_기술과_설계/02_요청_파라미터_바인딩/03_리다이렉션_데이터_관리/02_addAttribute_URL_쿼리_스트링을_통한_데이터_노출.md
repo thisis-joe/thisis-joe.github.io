@@ -1,7 +1,7 @@
 ---
 title: 02_addAttribute_URL_쿼리_스트링을_통한_데이터_노출
 created: 2026-05-14T00:02:29+09:00
-updated: 2026-06-16T19:33:35+09:00
+updated: 2026-06-16T19:36:48+09:00
 ---
 
 # addAttribute: URL 쿼리 스트링을 통한 데이터 노출

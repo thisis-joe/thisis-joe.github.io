@@ -1,7 +1,7 @@
 ---
 title: 02_FormData_API_Ajax_기반_비동기_멀티파트_전송_구현
 created: 2026-05-14T00:02:29+09:00
-updated: 2026-06-16T19:33:35+09:00
+updated: 2026-06-16T19:36:48+09:00
 ---
 
 # FormData API: Ajax 기반 비동기 멀티파트 전송 구현

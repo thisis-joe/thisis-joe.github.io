@@ -1,7 +1,7 @@
 ---
 title: 01_RequestBuilder_가상_요청_구성
 created: 2026-05-14T00:02:29+09:00
-updated: 2026-06-16T19:33:35+09:00
+updated: 2026-06-16T19:36:48+09:00
 ---
 
 # RequestBuilder: 가상 요청(메서드, 파라미터, 헤더) 구성

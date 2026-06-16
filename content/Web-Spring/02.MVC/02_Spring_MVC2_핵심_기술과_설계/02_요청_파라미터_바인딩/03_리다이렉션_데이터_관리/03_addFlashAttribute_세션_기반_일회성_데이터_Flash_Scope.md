@@ -1,7 +1,7 @@
 ---
 title: 03_addFlashAttribute_세션_기반_일회성_데이터_Flash_Scope
 created: 2026-05-14T00:02:29+09:00
-updated: 2026-06-16T19:33:35+09:00
+updated: 2026-06-16T19:36:48+09:00
 ---
 
 # addFlashAttribute: 세션 기반 일회성 데이터(Flash Scope)

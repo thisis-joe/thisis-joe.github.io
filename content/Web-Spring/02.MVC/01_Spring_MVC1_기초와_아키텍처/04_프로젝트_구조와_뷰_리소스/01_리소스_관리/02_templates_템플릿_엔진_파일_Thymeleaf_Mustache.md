@@ -1,7 +1,7 @@
 ---
 title: 02_templates_템플릿_엔진_파일_Thymeleaf_Mustache
 created: 2026-05-14T00:02:29+09:00
-updated: 2026-06-16T19:33:35+09:00
+updated: 2026-06-16T19:36:48+09:00
 ---
 
 # templates: 템플릿 엔진 파일 (Thymeleaf, Mustache)

@@ -1,7 +1,7 @@
 ---
 title: 02_ModelAttribute_DTO_생성_및_Setter_기반_프로퍼티_주입
 created: 2026-05-14T00:02:29+09:00
-updated: 2026-06-16T19:33:35+09:00
+updated: 2026-06-16T19:36:48+09:00
 ---
 
 # @ModelAttribute: DTO 생성 및 Setter 기반 프로퍼티 주입

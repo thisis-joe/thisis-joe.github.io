@@ -1,7 +1,7 @@
 ---
 title: 01_MockMvc_WAS_미가동_가상_Servlet_환경
 created: 2026-05-14T00:02:29+09:00
-updated: 2026-06-16T19:33:35+09:00
+updated: 2026-06-16T19:36:48+09:00
 ---
 
 # MockMvc: WAS 미가동 가상 Servlet 환경

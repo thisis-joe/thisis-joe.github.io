@@ -1,7 +1,7 @@
 ---
 title: 02_Redirect_redirect_접두어를_이용한_클라이언트_재요청
 created: 2026-05-14T00:02:29+09:00
-updated: 2026-06-16T19:33:35+09:00
+updated: 2026-06-16T19:36:48+09:00
 ---
 
 # Redirect: 'redirect:' 접두어를 이용한 클라이언트 재요청 유도

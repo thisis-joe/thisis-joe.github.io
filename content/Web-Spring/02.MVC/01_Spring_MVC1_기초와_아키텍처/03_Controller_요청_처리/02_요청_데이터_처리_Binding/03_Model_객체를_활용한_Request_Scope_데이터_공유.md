@@ -1,7 +1,7 @@
 ---
 title: 03_Model_객체를_활용한_Request_Scope_데이터_공유
 created: 2026-05-14T00:02:29+09:00
-updated: 2026-06-16T19:33:35+09:00
+updated: 2026-06-16T19:36:48+09:00
 ---
 
 # 데이터 저장: Model 객체를 활용한 Request Scope 데이터 공유

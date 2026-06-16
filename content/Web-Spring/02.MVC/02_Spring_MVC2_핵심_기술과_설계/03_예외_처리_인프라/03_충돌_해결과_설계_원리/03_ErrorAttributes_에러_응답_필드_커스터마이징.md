@@ -1,7 +1,7 @@
 ---
 title: 03_ErrorAttributes_에러_응답_필드_커스터마이징
 created: 2026-05-14T00:02:29+09:00
-updated: 2026-06-16T19:33:35+09:00
+updated: 2026-06-16T19:36:48+09:00
 ---
 
 # ErrorAttributes: 에러 응답 필드 커스터마이징

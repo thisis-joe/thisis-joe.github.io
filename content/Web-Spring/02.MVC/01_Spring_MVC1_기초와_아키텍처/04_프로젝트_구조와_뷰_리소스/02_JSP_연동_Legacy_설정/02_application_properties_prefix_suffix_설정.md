@@ -1,7 +1,7 @@
 ---
 title: 02_application_properties_prefix_suffix_설정
 created: 2026-05-14T00:02:29+09:00
-updated: 2026-06-16T19:33:35+09:00
+updated: 2026-06-16T19:36:48+09:00
 ---
 
 # 경로 지정: application.properties 내 prefix, suffix 설정

@@ -1,7 +1,7 @@
 ---
 title: 02_Primitive_Wrapper_타입_자동_변환
 created: 2026-05-14T00:02:29+09:00
-updated: 2026-06-16T19:33:35+09:00
+updated: 2026-06-16T19:36:48+09:00
 ---
 
 # 자동 타입 변환: Primitive 및 Wrapper 타입 지원

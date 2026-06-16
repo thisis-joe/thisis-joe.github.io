@@ -1,7 +1,7 @@
 ---
 title: 02_ExceptionHandler_특정_예외_발생_시_핸들링_로직_정의
 created: 2026-05-14T00:02:29+09:00
-updated: 2026-06-16T19:33:35+09:00
+updated: 2026-06-16T19:36:48+09:00
 ---
 
 # @ExceptionHandler: 특정 예외 발생 시 핸들링 로직 정의

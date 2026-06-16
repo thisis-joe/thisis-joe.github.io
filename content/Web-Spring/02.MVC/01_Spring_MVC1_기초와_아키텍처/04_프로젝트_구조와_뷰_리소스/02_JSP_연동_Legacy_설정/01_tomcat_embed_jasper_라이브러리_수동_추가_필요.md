@@ -1,7 +1,7 @@
 ---
 title: 01_tomcat_embed_jasper_라이브러리_수동_추가_필요
 created: 2026-05-14T00:02:29+09:00
-updated: 2026-06-16T19:33:35+09:00
+updated: 2026-06-16T19:36:48+09:00
 ---
 
 # 의존성: tomcat-embed-jasper 라이브러리 수동 추가 필요

@@ -1,7 +1,7 @@
 ---
 title: 03_CookieValue_HTTP_쿠키_정보_자동_추출_및_형변환
 created: 2026-05-14T00:02:29+09:00
-updated: 2026-06-16T19:33:35+09:00
+updated: 2026-06-16T19:36:48+09:00
 ---
 
 # @CookieValue: HTTP 쿠키 정보 자동 추출 및 형변환

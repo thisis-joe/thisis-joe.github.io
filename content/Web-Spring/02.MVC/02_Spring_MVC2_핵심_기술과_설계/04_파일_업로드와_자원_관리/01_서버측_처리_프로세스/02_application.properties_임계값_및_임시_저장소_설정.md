@@ -1,7 +1,7 @@
 ---
 title: 02_application.properties_임계값_및_임시_저장소_설정
 created: 2026-05-14T00:02:29+09:00
-updated: 2026-06-16T19:33:35+09:00
+updated: 2026-06-16T19:36:48+09:00
 ---
 
 # application.properties: 임계값 및 임시 저장소 설정

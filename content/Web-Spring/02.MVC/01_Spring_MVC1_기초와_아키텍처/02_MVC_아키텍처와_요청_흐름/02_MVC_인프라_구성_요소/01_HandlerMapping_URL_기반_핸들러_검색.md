@@ -1,7 +1,7 @@
 ---
 title: 01_HandlerMapping_URL_기반_핸들러_검색
 created: 2026-05-14T00:02:29+09:00
-updated: 2026-06-16T19:33:35+09:00
+updated: 2026-06-16T19:36:48+09:00
 ---
 
 # HandlerMapping: URL 기반 적합한 핸들러(컨트롤러) 검색

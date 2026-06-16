@@ -1,7 +1,7 @@
 ---
 title: 03_ResponseBody_JSON_데이터_직접_전송_Jackson
 created: 2026-05-14T00:02:29+09:00
-updated: 2026-06-16T19:33:35+09:00
+updated: 2026-06-16T19:36:48+09:00
 ---
 
 # Data 반환: @ResponseBody를 통한 JSON 데이터 직접 전송 (Jackson)

@@ -1,7 +1,7 @@
 ---
 title: 02_perform_DispatcherServlet을_통한_요청_실행
 created: 2026-05-14T00:02:29+09:00
-updated: 2026-06-16T19:33:35+09:00
+updated: 2026-06-16T19:36:48+09:00
 ---
 
 # perform(): DispatcherServlet을 통한 요청 실행

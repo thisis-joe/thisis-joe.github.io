@@ -1,7 +1,7 @@
 ---
 title: 01_RequestMapping_URL_경로와_메서드_연결
 created: 2026-05-14T00:02:29+09:00
-updated: 2026-06-16T19:33:35+09:00
+updated: 2026-06-16T19:36:48+09:00
 ---
 
 # @RequestMapping: URL 경로와 메서드 연결 (Type/Method 레벨)

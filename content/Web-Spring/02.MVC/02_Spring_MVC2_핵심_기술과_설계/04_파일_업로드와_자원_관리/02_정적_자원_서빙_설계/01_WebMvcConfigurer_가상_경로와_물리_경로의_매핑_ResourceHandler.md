@@ -1,7 +1,7 @@
 ---
 title: 01_WebMvcConfigurer_가상_경로와_물리_경로의_매핑_ResourceHandler
 created: 2026-05-14T00:02:29+09:00
-updated: 2026-06-16T19:33:35+09:00
+updated: 2026-06-16T19:36:48+09:00
 ---
 
 # WebMvcConfigurer: 가상 경로와 물리 경로의 매핑(ResourceHandler)

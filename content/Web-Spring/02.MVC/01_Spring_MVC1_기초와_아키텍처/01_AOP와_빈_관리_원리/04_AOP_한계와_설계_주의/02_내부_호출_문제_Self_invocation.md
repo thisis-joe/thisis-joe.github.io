@@ -1,7 +1,7 @@
 ---
 title: 02_내부_호출_문제_Self_invocation
 created: 2026-05-14T00:02:29+09:00
-updated: 2026-06-16T19:33:35+09:00
+updated: 2026-06-16T19:36:48+09:00
 ---
 
 # 내부 호출 문제(Self-invocation): 동일 클래스 내 메서드 간 호출 시 AOP 미작동

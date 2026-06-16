@@ -1,7 +1,7 @@
 ---
 title: 01_BasicErrorController_미처리_예외에_대한_최종_처리기
 created: 2026-05-14T00:02:29+09:00
-updated: 2026-06-16T19:33:35+09:00
+updated: 2026-06-16T19:36:48+09:00
 ---
 
 # BasicErrorController: 미처리 예외에 대한 최종 처리기

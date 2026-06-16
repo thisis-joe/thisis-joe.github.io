@@ -1,7 +1,7 @@
 ---
 title: 02_ArgumentResolver_파라미터_타입별_자동_매핑_메커니즘
 created: 2026-05-14T00:02:29+09:00
-updated: 2026-06-16T19:33:35+09:00
+updated: 2026-06-16T19:36:48+09:00
 ---
 
 # ArgumentResolver: 파라미터 타입별 자동 매핑 메커니즘
