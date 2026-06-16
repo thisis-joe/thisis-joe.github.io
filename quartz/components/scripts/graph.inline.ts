@@ -640,6 +640,23 @@ document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {
     window.addCleanup(() => icon.removeEventListener("click", renderGlobalGraph))
   })
 
+  const closeButtons = document.getElementsByClassName("global-graph-close")
+  Array.from(closeButtons).forEach((button) => {
+    button.addEventListener("click", hideGlobalGraph)
+    window.addCleanup(() => button.removeEventListener("click", hideGlobalGraph))
+  })
+
+  containers.forEach((container) => {
+    const backdropClickHandler = (event: MouseEvent) => {
+      if (event.target === container) {
+        hideGlobalGraph()
+      }
+    }
+
+    container.addEventListener("click", backdropClickHandler)
+    window.addCleanup(() => container.removeEventListener("click", backdropClickHandler))
+  })
+
   document.addEventListener("keydown", shortcutHandler)
   window.addCleanup(() => {
     document.removeEventListener("keydown", shortcutHandler)

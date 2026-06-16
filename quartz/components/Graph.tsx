@@ -96,6 +96,9 @@ export default ((opts?: Partial<GraphOptions>) => {
           </button>
         </div>
         <div class="global-graph-outer">
+          <button class="global-graph-close" aria-label="전체 그래프 닫기" title="전체 그래프 닫기">
+            ×
+          </button>
           <div class="global-graph-container" data-cfg={JSON.stringify(globalGraph)}></div>
         </div>
       </div>

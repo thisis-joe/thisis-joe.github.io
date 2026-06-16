@@ -32,6 +32,40 @@ const comments =
       ]
     : []
 
+const knowledgeGraph = Component.DesktopOnly(
+  Component.Graph({
+    localGraph: {
+      drag: true,
+      zoom: true,
+      depth: 2,
+      scale: 1.15,
+      repelForce: 0.7,
+      centerForce: 0.24,
+      linkDistance: 42,
+      fontSize: 0.66,
+      opacityScale: 1,
+      showTags: false,
+      focusOnHover: true,
+      enableRadial: false,
+    },
+    globalGraph: {
+      drag: true,
+      zoom: true,
+      depth: -1,
+      scale: 0.88,
+      repelForce: 0.78,
+      centerForce: 0.18,
+      linkDistance: 48,
+      fontSize: 0.72,
+      opacityScale: 1,
+      showTags: true,
+      removeTags: [],
+      focusOnHover: true,
+      enableRadial: false,
+    },
+  }),
+)
+
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
@@ -75,6 +109,7 @@ export const defaultContentPageLayout: PageLayout = {
       ],
     }),
     Component.Explorer(),
+    knowledgeGraph,
   ],
   right: [Component.DesktopOnly(Component.TableOfContents()), Component.Backlinks()],
 }
@@ -95,6 +130,7 @@ export const defaultListPageLayout: PageLayout = {
       ],
     }),
     Component.Explorer(),
+    knowledgeGraph,
   ],
   right: [],
 }
