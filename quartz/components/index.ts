@@ -23,6 +23,8 @@ import Breadcrumbs from "./Breadcrumbs"
 import Comments from "./Comments"
 import Flex from "./Flex"
 import ConditionalRender from "./ConditionalRender"
+import FeaturedPosts from "./FeaturedPosts"
+import RelatedPosts from "./RelatedPosts"
 
 export {
   ArticleTitle,
@@ -50,6 +52,8 @@ export {
   Comments,
   Flex,
   ConditionalRender,
+  FeaturedPosts,
+  RelatedPosts,
 }
 
 export { default as RecentPosts } from "./RecentPosts"

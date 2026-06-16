@@ -1,569 +1,466 @@
 @use "./base.scss";
 
-// put your custom CSS here!
+:root {
+  --site-bg: #ffffff;
+  --site-bg-soft: #f9fafb;
+  --site-border: #e5e7eb;
+  --site-border-strong: #d1d5db;
+  --site-text-muted: #6b7280;
+  --site-text-soft: #4b5563;
+  --site-link: #2563eb;
+  --site-link-hover: #1d4ed8;
+  --site-code-bg: #f3f4f6;
+  --site-code-text: #9f1239;
+}
 
-/* ==============================
-   동균 블로그 커스텀 스타일
-   ============================== */
+[saved-theme="dark"] {
+  --site-bg: #111827;
+  --site-bg-soft: #172033;
+  --site-border: #374151;
+  --site-border-strong: #4b5563;
+  --site-text-muted: #9ca3af;
+  --site-text-soft: #d1d5db;
+  --site-link: #93c5fd;
+  --site-link-hover: #bfdbfe;
+  --site-code-bg: #1f2937;
+  --site-code-text: #f9a8d4;
+}
 
-/* 전체 배경 */
 body {
-  background: #fbfaf8;
+  background: var(--site-bg);
+  color: var(--darkgray);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* 본문 가독성 */
+.page {
+  box-sizing: border-box;
+  width: min(100% - 2rem, 92rem);
+  margin-inline: auto;
+  padding-inline: clamp(0.25rem, 1vw, 1rem);
+  grid-template-columns:
+    minmax(16rem, 21rem)
+    minmax(0, 52rem)
+    minmax(14rem, 18rem) !important;
+  column-gap: clamp(2rem, 3vw, 4rem);
+}
+
+.center {
+  width: 100%;
+  max-width: 52rem;
+  min-width: 0;
+}
+
+.left.sidebar,
+.right.sidebar {
+  min-width: 0;
+}
+
+.left.sidebar {
+  padding-top: 1.1rem;
+  gap: 0.8rem;
+}
+
+.right.sidebar {
+  color: var(--site-text-muted);
+}
+
 article {
-  line-height: 1.78;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   font-size: 1.02rem;
+  line-height: 1.82;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
-/* 본문 폭 */
-
-
-/* 글 제목 */
 .article-title {
-  font-size: 2.15rem;
-  letter-spacing: -0.04em;
-  font-weight: 800;
-  margin-bottom: 0.4rem;
+  margin: 0 0 0.55rem;
+  font-size: clamp(1.85rem, 3vw, 2.45rem);
+  font-weight: 750;
+  line-height: 1.28;
+  letter-spacing: 0;
 }
 
-/* 글 메타 정보 */
 .content-meta {
-  color: #777;
-  font-size: 0.92rem;
+  color: var(--site-text-muted);
+  font-size: 0.88rem;
 }
 
-/* 제목 계층 */
 h1,
 h2,
-h3 {
-  letter-spacing: -0.035em;
-  line-height: 1.35;
+h3,
+h4 {
+  letter-spacing: 0;
+  line-height: 1.38;
 }
 
 h2 {
-  margin-top: 2.6rem;
-  padding-bottom: 0.35rem;
-  border-bottom: 1px solid #e7e2dc;
+  margin-top: 2.8rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 1px solid var(--site-border);
+  font-size: 1.45rem;
 }
 
 h3 {
-  margin-top: 2rem;
+  margin-top: 2.1rem;
+  font-size: 1.18rem;
 }
 
-/* 링크 */
 a {
-  color: #2f5d62;
+  color: var(--site-link);
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
 }
 
 a:hover {
-  color: #1f4144;
+  color: var(--site-link-hover);
 }
 
-/* 왼쪽 사이드바 */
-.left.sidebar {
-  padding-top: 1.4rem;
-  gap: 0.85rem;
-}
-
-/* 블로그 제목 */
 .page-title a {
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  color: #1f2933;
+  color: var(--dark);
+  font-weight: 750;
 }
 
-/* 검색창 */
 .search > .search-button {
-  border-radius: 12px;
-  border: 1px solid #e5dfd8;
-  background: #ffffff;
-  box-shadow: 0 2px 8px rgba(20, 20, 20, 0.04);
-}
-
-/* Explorer */
-.explorer {
-  font-size: 0.95rem;
-}
-
-.explorer button {
+  border: 1px solid var(--site-border);
   border-radius: 8px;
-}
-
-/* 코드 블록 */
-pre {
-  border-radius: 14px;
-  border: 1px solid #e3ddd5;
-  box-shadow: 0 8px 22px rgba(20, 20, 20, 0.06);
-}
-
-/* 인라인 코드 */
-:not(pre) > code {
-  border-radius: 6px;
-  padding: 0.12rem 0.32rem;
-  background: #f1eee9;
-  color: #9a3412;
-  font-size: 0.92em;
-}
-
-/* 인용문 */
-blockquote {
-  border-left: 4px solid #5e8b7e;
-  background: #f4f7f5;
-  padding: 0.8rem 1rem;
-  border-radius: 0 12px 12px 0;
-  color: #374151;
-}
-
-/* 표 */
-table {
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid #e5dfd8;
-}
-
-th {
-  background: #f1eee9;
-}
-
-/* 태그 */
-.tags {
-  gap: 0.4rem;
-}
-
-.tags > li > a {
-  border-radius: 999px;
-  padding: 0.18rem 0.58rem;
-  background: #eef4f2;
-  color: #2f5d62;
-  border: 1px solid #d7e5e1;
-}
-
-/* 오른쪽 목차 */
-.toc {
-  font-size: 0.92rem;
-}
-
-.toc a {
-  color: #555;
-}
-
-.toc a:hover {
-  color: #2f5d62;
-}
-
-/* 좌측 하단 Graph View 축소 */
-.left.sidebar .graph {
-  margin-top: 1.2rem;
-  max-height: 220px;
-  overflow: hidden;
-}
-
-.left.sidebar .graph > h3 {
-  font-size: 0.95rem;
-  margin-top: 0.8rem;
-  margin-bottom: 0.5rem;
-}
-
-.left.sidebar .graph canvas,
-.left.sidebar .graph svg {
-  max-height: 180px;
-}
-
-/* footer */
-footer {
-  color: #888;
-  font-size: 0.9rem;
-}
-
-/* 모바일 */
-@media all and (max-width: 800px) {
-  article {
-    font-size: 1rem;
-    line-height: 1.72;
-  }
-
-  .article-title {
-    font-size: 1.8rem;
-  }
-}
-
-
-/* ==============================
-   다크모드 색상 보정
-   ============================== */
-
-/*
-   기존 custom.scss에서 body 배경을 라이트 색으로 고정했기 때문에
-   다크모드에서는 별도 배경/글자색을 강제로 보정함.
-*/
-[saved-theme="dark"] body {
-  background: #111315;
-  color: #e7e7e7;
-}
-
-[saved-theme="dark"] .page,
-[saved-theme="dark"] .center,
-[saved-theme="dark"] article {
-  background: transparent;
-  color: #e7e7e7;
-}
-
-/* 제목 */
-[saved-theme="dark"] h1,
-[saved-theme="dark"] h2,
-[saved-theme="dark"] h3,
-[saved-theme="dark"] h4,
-[saved-theme="dark"] .article-title,
-[saved-theme="dark"] .page-title a {
-  color: #f2f2f2;
-}
-
-/* 메타 정보 */
-[saved-theme="dark"] .content-meta {
-  color: #a8adb3;
-}
-
-/* 링크 */
-[saved-theme="dark"] a {
-  color: #8ab4b8;
-}
-
-[saved-theme="dark"] a:hover {
-  color: #b6d9dc;
-}
-
-/* 검색창 */
-[saved-theme="dark"] .search > .search-button {
-  background: #1a1d20;
-  border: 1px solid #2c3238;
-  color: #e7e7e7;
+  background: var(--site-bg);
   box-shadow: none;
 }
 
-/* Explorer / TOC */
-[saved-theme="dark"] .explorer,
-[saved-theme="dark"] .toc,
-[saved-theme="dark"] .left.sidebar,
-[saved-theme="dark"] .right.sidebar {
-  color: #d8d8d8;
+.search > .search-button:hover {
+  border-color: var(--site-border-strong);
 }
 
-[saved-theme="dark"] .toc a {
-  color: #b8bec5;
-}
-
-[saved-theme="dark"] .toc a:hover {
-  color: #8ab4b8;
-}
-
-/* 구분선 */
-[saved-theme="dark"] h2 {
-  border-bottom: 1px solid #2c3238;
-}
-
-/* 코드 블록 */
-[saved-theme="dark"] pre {
-  border: 1px solid #2c3238;
-  box-shadow: none;
-}
-
-/* 인라인 코드 */
-[saved-theme="dark"] :not(pre) > code {
-  background: #24282d;
-  color: #f3b37a;
-}
-
-/* 인용문 */
-[saved-theme="dark"] blockquote {
-  border-left: 4px solid #8ab4b8;
-  background: #1a1f22;
-  color: #d7dde2;
-}
-
-/* 표 */
-[saved-theme="dark"] table {
-  border: 1px solid #2c3238;
-}
-
-[saved-theme="dark"] th {
-  background: #1d2227;
-}
-
-/* 태그 */
-[saved-theme="dark"] .tags > li > a {
-  background: #1d2a2c;
-  color: #9ed5d8;
-  border: 1px solid #2f4a4e;
-}
-
-/* Graph View */
-[saved-theme="dark"] .left.sidebar .graph {
-  background: transparent;
-  border-color: #2c3238;
-}
-
-/* footer */
-[saved-theme="dark"] footer {
-  color: #9aa1a9;
-}
-
-/* ==============================
-   Explorer 파일명 굵기 조정
-   ============================== */
-
-/* Explorer 전체를 조금 덜 무겁게 */
 .explorer {
+  width: 100%;
+  max-width: 100%;
+  color: var(--site-text-soft);
+  font-size: 0.92rem;
   font-weight: 400;
 }
 
-/* 폴더명은 살짝만 강조 */
-.explorer .folder-title,
-.explorer button {
-  font-weight: 600;
+.explorer button,
+.explorer .folder-title {
+  font-weight: 650 !important;
 }
 
-/* 파일명은 bold 제거 */
 .explorer a,
 .explorer .content,
 .explorer .folder-outer a {
-  font-weight: 400;
+  color: var(--site-text-soft);
+  font-weight: 400 !important;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+  word-break: keep-all;
 }
 
-/* 현재 선택된 글도 너무 두껍지 않게 */
 .explorer a.active,
-.explorer .active {
-  font-weight: 500;
-}
-
-/* 파일명 색도 살짝 부드럽게 */
-.explorer a {
-  color: var(--darkgray);
-}
-
-/* hover 시에만 강조 */
+.explorer .active,
 .explorer a:hover {
-  color: var(--secondary);
+  color: var(--site-link);
 }
 
-
-/* ==============================
-   Explorer 홈 파일 숨김
-   ============================== */
-
-/*
-   홈(index.md)이 Explorer에 Hello!로 중복 표시되는 문제 방지.
-   사이트 제목인 "동균 블로그"가 이미 홈 링크 역할을 하므로 Explorer에서는 홈 항목을 숨김.
-*/
-.explorer a[href="/"],
-.explorer a[href="./"],
-.explorer a[href="."],
-.explorer a[href="/index"],
-.explorer a[href="/index/"],
-.explorer a[href="./index"],
-.explorer a[href="./index/"],
-.explorer a[href="/Hello!"],
-.explorer a[href="/Hello%21"],
-.explorer a[href="./Hello!"],
-.explorer a[href="./Hello%21"] {
-  display: none !important;
-}
-
-/*
-   브라우저가 href를 상대 경로로 만들었을 때까지 대응.
-*/
 .explorer li:has(a[href="/"]),
 .explorer li:has(a[href="./"]),
 .explorer li:has(a[href="."]),
 .explorer li:has(a[href="/index"]),
 .explorer li:has(a[href="/index/"]),
 .explorer li:has(a[href="./index"]),
-.explorer li:has(a[href="./index/"]),
-.explorer li:has(a[href="/Hello!"]),
-.explorer li:has(a[href="/Hello%21"]),
-.explorer li:has(a[href="./Hello!"]),
-.explorer li:has(a[href="./Hello%21"]) {
+.explorer li:has(a[href="./index/"]) {
   display: none !important;
 }
 
-/*
-   Explorer 파일명 굵기 완화.
-*/
-.explorer a {
-  font-weight: 400 !important;
-}
-
-.explorer button,
-.explorer .folder-title {
-  font-weight: 600 !important;
-}
-
-
-/* ==============================
-   우측 목차 확장 및 grid 재조정
-   ============================== */
-
-/*
-   Quartz는 page 영역이 grid 기반이라,
-   좌측/본문/우측 폭은 grid-template-columns에서 직접 잡는 게 가장 안정적임.
-*/
-.page {
-  width: min(98vw, 132rem);
-  margin-inline: auto;
-  padding-inline: clamp(0.8rem, 1.3vw, 1.6rem);
-
-  /*
-    좌측: 파일명이 길 수 있어서 넉넉하게
-    본문: 남는 공간 대부분 사용
-    우측: 목차가 잘리지 않도록 충분히 확보
-  */
-  grid-template-columns:
-    minmax(19rem, 24rem)
-    minmax(0, 1fr)
-    minmax(17rem, 22rem) !important;
-
-  column-gap: clamp(2rem, 2.8vw, 4rem);
-}
-
-/* 본문은 가운데 grid 칸을 최대한 사용 */
-.center {
-  width: 100%;
-  max-width: 98ch;
-  min-width: 0;
-}
-
-article {
-  width: 100%;
-  max-width: 100%;
-  min-width: 0;
-}
-
-/* 좌측 탐색기 */
-.left.sidebar {
-  width: 100%;
-  min-width: 0;
-  max-width: none;
-}
-
-.explorer {
-  width: 100%;
-  max-width: 100%;
-}
-
-.explorer a,
-.explorer button {
-  line-height: 1.45;
-  overflow-wrap: anywhere;
-  word-break: keep-all;
-}
-
-.explorer a {
-  font-weight: 400 !important;
-}
-
-.explorer button,
-.explorer .folder-title {
-  font-weight: 600 !important;
-}
-
-/* 우측 목차 영역을 grid 칸 전체에 가깝게 사용 */
-.right.sidebar {
-  width: 100%;
-  min-width: 0;
-  max-width: none !important;
-  overflow: visible;
-}
-
-/* TOC 내부 폭 제한 제거 */
-.right.sidebar .toc,
-.right.sidebar nav {
-  width: 100%;
-  max-width: none !important;
-}
-
-.right.sidebar .toc-content,
-.right.sidebar ul {
-  width: 100%;
-  max-width: none !important;
-}
-
-/* 목차 텍스트가 한 글자씩 잘리지 않도록 처리 */
-.right.sidebar .toc a,
-.right.sidebar .toc li {
-  display: block;
-  white-space: normal;
-  word-break: keep-all;
-  overflow-wrap: break-word;
-  text-overflow: unset;
-  overflow: visible;
-}
-
-/* 목차는 약간 조밀하게 */
-.right.sidebar .toc {
-  font-size: 0.88rem;
+.toc {
+  font-size: 0.86rem;
   line-height: 1.48;
 }
 
-.right.sidebar .toc h3 {
-  font-size: 0.92rem;
-  margin-bottom: 0.45rem;
+.toc a,
+.toc li {
+  white-space: normal;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
-.right.sidebar .toc ul {
-  padding-left: 0.85rem;
+.toc a {
+  color: var(--site-text-muted);
 }
 
-.right.sidebar .toc li {
-  margin: 0.18rem 0;
+.toc a:hover {
+  color: var(--site-link);
 }
 
-/* 코드블록과 표는 본문 안에서만 가로 스크롤 */
+.backlinks {
+  border-top: 1px solid var(--site-border);
+  padding-top: 1rem;
+}
+
+pre {
+  border: 1px solid var(--site-border);
+  border-radius: 8px;
+  box-shadow: none;
+}
+
 pre,
 table {
   max-width: 100%;
   overflow-x: auto;
 }
 
-/* 그래프뷰는 좌측 하단에서 작게 유지 */
-.left.sidebar .graph {
-  margin-top: 1.3rem;
-  max-height: min(13rem, 22vh);
+:not(pre) > code {
+  border-radius: 5px;
+  padding: 0.1rem 0.28rem;
+  background: var(--site-code-bg);
+  color: var(--site-code-text);
+  font-size: 0.9em;
+}
+
+blockquote {
+  margin-inline: 0;
+  border-left: 3px solid var(--site-border-strong);
+  border-radius: 0;
+  background: var(--site-bg-soft);
+  color: var(--site-text-soft);
+  padding: 0.8rem 1rem;
+}
+
+table {
+  border: 1px solid var(--site-border);
+  border-radius: 8px;
   overflow: hidden;
 }
 
-.left.sidebar .graph canvas,
-.left.sidebar .graph svg {
-  max-height: min(9.5rem, 16vh);
+th {
+  background: var(--site-bg-soft);
 }
 
-/*
-   넓은 화면에서는 좌측과 우측을 더 확보.
-*/
+.tags {
+  gap: 0.35rem;
+}
+
+.tags > li > a {
+  border: 1px solid var(--site-border);
+  border-radius: 6px;
+  background: var(--site-bg);
+  color: var(--site-text-soft);
+  padding: 0.14rem 0.42rem;
+  font-size: 0.82rem;
+}
+
+.tags > li > a:hover {
+  border-color: var(--site-border-strong);
+  color: var(--site-link);
+}
+
+.page-footer {
+  margin-top: 2.4rem;
+}
+
+.center > article.popover-hint + hr,
+.center > article + hr,
+article hr:last-child {
+  display: none !important;
+}
+
+.recent-feed,
+.featured-posts,
+.related-posts {
+  margin-top: 2.3rem;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.recent-feed > h2,
+.featured-posts h2,
+.related-posts h2 {
+  margin-top: 0;
+  margin-bottom: 0.9rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 1px solid var(--site-border);
+  font-size: 1.18rem;
+}
+
+.section-heading-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.section-heading-row > span {
+  color: var(--site-text-muted);
+  font-size: 0.82rem;
+}
+
+.recent-feed-list {
+  display: grid;
+  gap: 0;
+}
+
+.recent-feed-row {
+  display: grid;
+  grid-template-columns: 5.6rem minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 0.85rem;
+  padding: 0.42rem 0;
+  border-bottom: 1px solid var(--site-border);
+  line-height: 1.4;
+}
+
+.recent-feed-label {
+  color: var(--site-text-muted);
+  font-size: 0.78rem;
+}
+
+.recent-feed-label.modified {
+  color: var(--site-link);
+}
+
+.recent-feed-title {
+  color: var(--dark);
+  overflow-wrap: anywhere;
+}
+
+.recent-feed-title:hover {
+  color: var(--site-link);
+}
+
+.recent-feed-date {
+  color: var(--site-text-muted);
+  font-size: 0.76rem;
+  white-space: nowrap;
+}
+
+.recent-feed-more {
+  margin-top: 0.7rem;
+}
+
+.recent-feed-more summary {
+  color: var(--site-text-muted);
+  cursor: pointer;
+  font-size: 0.88rem;
+}
+
+.feature-grid,
+.related-list {
+  display: grid;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.feature-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.feature-card,
+.related-item {
+  border: 1px solid var(--site-border);
+  border-radius: 8px;
+  background: var(--site-bg);
+}
+
+.feature-card {
+  padding: 0.9rem;
+}
+
+.feature-card-title,
+.related-title {
+  display: inline-block;
+  color: var(--dark);
+  font-weight: 650;
+  line-height: 1.45;
+}
+
+.feature-card-title:hover,
+.related-title:hover {
+  color: var(--site-link);
+}
+
+.feature-card-desc,
+.related-item p {
+  margin: 0.5rem 0 0;
+  color: var(--site-text-soft);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.feature-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.7rem;
+  margin-top: 0.7rem;
+  color: var(--site-text-muted);
+  font-size: 0.78rem;
+}
+
+.feature-card-tags,
+.related-item span {
+  color: var(--site-text-muted);
+}
+
+.related-list {
+  gap: 0.65rem;
+}
+
+.related-item {
+  padding: 0.8rem 0.9rem;
+}
+
+.related-item span {
+  display: inline-block;
+  margin-top: 0.45rem;
+  font-size: 0.78rem;
+}
+
+.giscus {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--site-border);
+}
+
+footer {
+  color: var(--site-text-muted);
+  font-size: 0.86rem;
+}
+
+[saved-theme="dark"] body,
+[saved-theme="dark"] .page,
+[saved-theme="dark"] .center,
+[saved-theme="dark"] article {
+  background: var(--site-bg);
+}
+
+[saved-theme="dark"] .feature-card,
+[saved-theme="dark"] .related-item,
+[saved-theme="dark"] .search > .search-button,
+[saved-theme="dark"] .tags > li > a {
+  background: var(--site-bg);
+}
+
 @media all and (min-width: 105rem) {
   .page {
-    width: min(98vw, 144rem);
+    width: min(100% - 3rem, 100rem);
     grid-template-columns:
-      minmax(21rem, 27rem)
-      minmax(0, 1fr)
-      minmax(18rem, 24rem) !important;
+      minmax(18rem, 23rem)
+      minmax(0, 56rem)
+      minmax(15rem, 20rem) !important;
   }
 
   .center {
-    max-width: 104ch;
+    max-width: 56rem;
   }
 }
 
-/*
-   중간 화면에서는 우측 목차를 먼저 숨겨 본문과 좌측 탐색기를 살림.
-*/
 @media all and (max-width: 86rem) {
   .page {
-    width: 100%;
+    width: min(100% - 1.5rem, 76rem);
     grid-template-columns:
-      minmax(16rem, 21rem)
+      minmax(15rem, 20rem)
       minmax(0, 1fr) !important;
   }
 
@@ -572,187 +469,36 @@ table {
   }
 
   .center {
-    max-width: 96ch;
+    max-width: 100%;
   }
 }
 
-/*
-   좁은 화면에서는 본문 우선.
-*/
 @media all and (max-width: 58rem) {
   .page {
     width: 100%;
     padding-inline: 1rem;
   }
 
-  .center {
-    width: 100%;
-    max-width: none;
+  article {
+    font-size: 1rem;
+    line-height: 1.76;
   }
 
-  .left.sidebar .graph {
-    display: none;
+  .article-title {
+    font-size: 1.75rem;
   }
-}
 
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
 
-/* ==============================
-   TOC 토글 동작 복구
-   ============================== */
+  .recent-feed-row {
+    grid-template-columns: 1fr;
+    gap: 0.18rem;
+    padding: 0.58rem 0;
+  }
 
-/*
-   목차가 잘리지 않게 하려고 overflow: visible을 강제하면
-   Quartz의 접기/펼치기 토글이 먹지 않을 수 있음.
-   우측 사이드바 자체는 보이게 두되, 목차 내부 컨텐츠는 Quartz 기본 토글 동작을 따르게 함.
-*/
-.right.sidebar {
-  overflow: visible;
-}
-
-.right.sidebar .toc {
-  width: 100%;
-  max-width: none !important;
-}
-
-/*
-   토글되는 실제 내용 영역에는 overflow: visible을 강제하지 않음.
-   그래야 접기 상태에서 목차가 정상적으로 숨겨짐.
-*/
-.right.sidebar .toc-content,
-.right.sidebar .toc ul {
-  max-width: none !important;
-}
-
-/*
-   목차 텍스트 줄바꿈은 유지하되,
-   토글 표시/숨김 동작은 방해하지 않음.
-*/
-.right.sidebar .toc a,
-.right.sidebar .toc li {
-  white-space: normal;
-  word-break: keep-all;
-  overflow-wrap: break-word;
-  text-overflow: unset;
-}
-
-/*
-   Quartz가 aria-expanded 또는 collapsed 클래스로 접기 상태를 표시하는 경우를 보정.
-*/
-.right.sidebar button[aria-expanded="false"] ~ .toc-content,
-.right.sidebar .collapsed .toc-content,
-.right.sidebar .toc.collapsed .toc-content {
-  display: none;
-}
-
-
-/* ==============================
-   홈 섹션 구분선/최근 글 간격 정리
-   ============================== */
-
-/* 최근 글 섹션 위쪽에 생기는 불필요한 구분선 제거 */
-.recent-feed,
-section.recent-feed {
-  border-top: 0 !important;
-  border-block-start: 0 !important;
-  padding-top: 0 !important;
-  margin-top: 1.6rem !important;
-}
-
-/* 최근 글 제목은 h2처럼 보이되, 제목 밑 구분선은 유지 */
-.recent-feed > h2,
-section.recent-feed > h2 {
-  margin-top: 0 !important;
-  margin-bottom: 0.65rem !important;
-  padding-bottom: 0.35rem !important;
-  border-bottom: 1px solid var(--lightgray) !important;
-  border-block-end: 1px solid var(--lightgray) !important;
-}
-
-/* 최근 글 바로 앞 본문 요소가 여백을 과하게 만들지 않게 조정 */
-article > *:last-child {
-  margin-bottom: 1rem !important;
-}
-
-/* 최근 글 리스트 줄 간격 축소 */
-.recent-feed-list {
-  gap: 0 !important;
-}
-
-/* 최근 글 한 줄 높이 축소 */
-.recent-feed-row {
-  padding: 0.22rem 0 !important;
-  min-height: 0 !important;
-  line-height: 1.35 !important;
-  border-bottom: 1px solid color-mix(in srgb, var(--lightgray) 55%, transparent) !important;
-}
-
-/* [최근 생성] / [최근 수정] */
-.recent-feed-label {
-  line-height: 1.35 !important;
-}
-
-/* 파일명 */
-.recent-feed-title {
-  line-height: 1.35 !important;
-}
-
-/* 날짜는 더 작고 조용하게 */
-.recent-feed-date {
-  font-size: 0.76rem !important;
-  line-height: 1.35 !important;
-}
-
-/* 더보기와 리스트 사이 간격 축소 */
-.recent-feed-more {
-  margin-top: 0.55rem !important;
-}
-
-.recent-feed-more .recent-feed-list {
-  margin-top: 0.4rem !important;
-}
-
-/* 홈 본문 안에 마지막 hr이 생긴 경우 제거 */
-article hr:last-child,
-article > hr:last-child {
-  display: none !important;
-}
-
-
-/* ==============================
-   본문 article 뒤 hr 제거
-   ============================== */
-
-/*
-   Quartz가 article.popover-hint 바로 뒤에 자동으로 넣는 hr 제거.
-   이 선이 "정리하는 주제" 목록 아래와 "최근 글" 사이에 보이는 중간선임.
-*/
-.center > article.popover-hint + hr,
-div.center > article.popover-hint + hr,
-#quartz-body .center > article.popover-hint + hr {
-  display: none !important;
-  visibility: hidden !important;
-  height: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  border: 0 !important;
-  background: transparent !important;
-}
-
-/*
-   최근 글 제목 아래 선은 유지.
-*/
-.recent-feed-heading,
-.recent-feed > h2.recent-feed-heading,
-section.recent-feed > h2.recent-feed-heading {
-  border-bottom: 1px solid var(--lightgray) !important;
-  padding-bottom: 0.35rem !important;
-  margin-bottom: 0.75rem !important;
-}
-
-/*
-   최근 글 리스트 행에는 선 없음.
-*/
-.recent-feed-row {
-  border: 0 !important;
-  box-shadow: none !important;
+  .recent-feed-date {
+    white-space: normal;
+  }
 }
