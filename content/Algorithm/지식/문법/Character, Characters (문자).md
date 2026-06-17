@@ -1,7 +1,7 @@
 ---
 title: Character, Characters (문자)
 created: 2026-06-04T10:49:48+09:00
-updated: 2026-06-17T05:00:06+09:00
+updated: 2026-06-18T05:00:07+09:00
 ---
 
 ### Character
