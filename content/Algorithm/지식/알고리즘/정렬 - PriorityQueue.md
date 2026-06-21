@@ -1,7 +1,7 @@
 ---
 title: 정렬 - PriorityQueue
 created: 2026-06-16T19:33:35+09:00
-updated: 2026-06-21T05:00:05+09:00
+updated: 2026-06-22T05:00:02+09:00
 ---
 
 > [!info]  계속 최솟값이나 최댓값을 꺼내야 하면 `PriorityQueue`를 사용한다.

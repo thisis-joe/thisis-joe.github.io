@@ -1,7 +1,7 @@
 ---
 title: math.BigInteger
 created: 2026-06-04T10:49:48+09:00
-updated: 2026-06-21T05:00:05+09:00
+updated: 2026-06-22T05:00:02+09:00
 ---
 
 ```java

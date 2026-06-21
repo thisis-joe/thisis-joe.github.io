@@ -1,7 +1,7 @@
 ---
 title: String, StringBuilder
 created: 2026-06-16T19:33:35+09:00
-updated: 2026-06-21T05:00:05+09:00
+updated: 2026-06-22T05:00:02+09:00
 ---
 
 ## String
