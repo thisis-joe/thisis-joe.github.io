@@ -1,7 +1,7 @@
 ---
 title: math.BigInteger
 created: 2026-06-16T19:33:35+09:00
-updated: 2026-06-22T05:00:02+09:00
+updated: 2026-06-23T05:00:07+09:00
 ---
 
 # BigInteger
