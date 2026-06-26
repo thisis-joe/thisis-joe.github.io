@@ -1,7 +1,7 @@
 ---
 title: API_FRONTEND_CONNECTION_SPEC
 created: 2026-06-26T05:00:07+09:00
-updated: 2026-06-26T05:00:07+09:00
+updated: 2026-06-27T05:00:07+09:00
 ---
 
 # API 명세와 프론트엔드 연결 현황

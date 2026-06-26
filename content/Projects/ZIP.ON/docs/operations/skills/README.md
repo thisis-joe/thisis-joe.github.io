@@ -1,7 +1,7 @@
 ---
 title: README
 created: 2026-06-26T05:00:07+09:00
-updated: 2026-06-26T05:00:07+09:00
+updated: 2026-06-27T05:00:07+09:00
 purpose: operations-skill-index
 status: active
 code_sync_required: false

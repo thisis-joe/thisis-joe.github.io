@@ -1,7 +1,7 @@
 ---
 title: list comp, itertools
 created: 2026-03-18T16:20:55+09:00
-updated: 2026-06-26T05:00:07+09:00
+updated: 2026-06-27T05:00:07+09:00
 ---
 
 리스트 컴프리헨션

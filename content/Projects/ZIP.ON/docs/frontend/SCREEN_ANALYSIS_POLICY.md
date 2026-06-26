@@ -1,7 +1,7 @@
 ---
 title: SCREEN_ANALYSIS_POLICY
 created: 2026-06-26T05:00:07+09:00
-updated: 2026-06-26T05:00:07+09:00
+updated: 2026-06-27T05:00:07+09:00
 ---
 
 # ZIP:ON 통찰형 위험진단 리포트 전략

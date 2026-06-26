@@ -1,7 +1,7 @@
 ---
 title: DATA_USAGE_AND_INSIGHT_PLAN
 created: 2026-06-26T05:00:07+09:00
-updated: 2026-06-26T05:00:07+09:00
+updated: 2026-06-27T05:00:07+09:00
 ---
 
 # 외부 API 데이터 활용과 통찰 산출 계획

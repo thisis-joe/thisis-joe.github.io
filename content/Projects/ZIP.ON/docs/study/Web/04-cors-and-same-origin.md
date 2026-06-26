@@ -1,7 +1,7 @@
 ---
 title: 04-cors-and-same-origin
 created: 2026-06-26T05:00:07+09:00
-updated: 2026-06-26T05:00:07+09:00
+updated: 2026-06-27T05:00:07+09:00
 ---
 
 # CORS와 Same-Origin Policy

@@ -1,7 +1,7 @@
 ---
 title: 04-router-and-view-components
 created: 2026-06-26T05:00:07+09:00
-updated: 2026-06-26T05:00:07+09:00
+updated: 2026-06-27T05:00:07+09:00
 ---
 
 # Vue Router와 View Component
