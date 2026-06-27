@@ -1,7 +1,7 @@
 ---
 title: 00-spring-boot-master-roadmap
 created: 2026-06-26T05:00:07+09:00
-updated: 2026-06-27T05:00:07+09:00
+updated: 2026-06-28T05:00:06+09:00
 ---
 
 # Spring Boot 마스터 로드맵

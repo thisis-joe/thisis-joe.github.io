@@ -1,7 +1,7 @@
 ---
 title: MR_MESSAGE_GUIDE
 created: 2026-06-26T05:00:07+09:00
-updated: 2026-06-27T05:00:07+09:00
+updated: 2026-06-28T05:00:06+09:00
 purpose: agent-operation-rule
 status: active
 code_sync_required: false

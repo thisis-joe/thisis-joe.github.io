@@ -1,7 +1,7 @@
 ---
 title: 06-configuration-properties-profiles
 created: 2026-06-26T05:00:07+09:00
-updated: 2026-06-27T05:00:07+09:00
+updated: 2026-06-28T05:00:06+09:00
 ---
 
 # Configuration과 Profiles
