@@ -1,7 +1,7 @@
 ---
 title: DATA_STORAGE_AND_CACHE_POLICY
 created: 2026-06-26T05:00:07+09:00
-updated: 2026-06-28T05:00:06+09:00
+updated: 2026-06-29T05:00:06+09:00
 ---
 
 # 외부 API 데이터 저장과 캐시 정책

@@ -1,7 +1,7 @@
 ---
 title: BACKEND_RESPONSE_CONTRACT_2026_06_23
 created: 2026-06-26T05:00:07+09:00
-updated: 2026-06-28T05:00:06+09:00
+updated: 2026-06-29T05:00:06+09:00
 purpose: backend-response-contract
 status: active
 code_sync_required: true

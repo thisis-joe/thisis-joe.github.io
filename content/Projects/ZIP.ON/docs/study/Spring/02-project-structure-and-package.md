@@ -1,7 +1,7 @@
 ---
 title: 02-project-structure-and-package
 created: 2026-06-26T05:00:07+09:00
-updated: 2026-06-28T05:00:06+09:00
+updated: 2026-06-29T05:00:06+09:00
 ---
 
 # 프로젝트 구조와 Package

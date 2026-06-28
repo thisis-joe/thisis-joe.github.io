@@ -1,7 +1,7 @@
 ---
 title: OPENAI_RISK_SCORING_PROMPT
 created: 2026-06-26T05:00:07+09:00
-updated: 2026-06-28T05:00:06+09:00
+updated: 2026-06-29T05:00:06+09:00
 ---
 
 # OpenAI 위험 산정 프롬프트

@@ -1,7 +1,7 @@
 ---
 title: EXTERNAL_API_CONFIGURATION
 created: 2026-06-26T05:00:07+09:00
-updated: 2026-06-28T05:00:06+09:00
+updated: 2026-06-29T05:00:06+09:00
 ---
 
 # 외부 API 설정과 data.go.kr 키 관리

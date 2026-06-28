@@ -1,7 +1,7 @@
 ---
 title: COMPONENT_ROLE_MAP
 created: 2026-06-26T05:00:07+09:00
-updated: 2026-06-28T05:00:06+09:00
+updated: 2026-06-29T05:00:06+09:00
 ---
 
 # ZIP:ON 프론트엔드 컴포넌트 역할 지도
