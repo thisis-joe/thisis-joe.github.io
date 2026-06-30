@@ -1,7 +1,7 @@
 ---
 title: juso-popup-return-url-protocol
-created: 2026-06-26T05:00:07+09:00
-updated: 2026-06-30T05:00:06+09:00
+created: 2026-07-01T00:06:00+09:00
+updated: 2026-07-01T00:06:00+09:00
 purpose: operations-skill
 status: active
 code_sync_required: true
@@ -185,4 +185,4 @@ curl -s 'http://localhost:8082/api/address-search/juso-popup?targetOrigin=http:/
 - [External API configuration](../../api/EXTERNAL_API_CONFIGURATION.md)
 - [Juso address search API spec](../../api/external-api/specs/juso-address-search-api.md)
 - [Address code flow](../../api/external-api/ADDRESS_CODE_FLOW.md)
-- [Repeated Work Skills](README.md)
+- [Repeated Work Skills](Blog/posts/Projects/ZIP.ON/docs/operations/skills/README.md)

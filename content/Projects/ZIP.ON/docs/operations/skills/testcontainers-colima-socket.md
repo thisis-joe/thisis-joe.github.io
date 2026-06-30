@@ -1,7 +1,7 @@
 ---
 title: testcontainers-colima-socket
-created: 2026-06-26T05:00:07+09:00
-updated: 2026-06-30T05:00:06+09:00
+created: 2026-07-01T00:06:00+09:00
+updated: 2026-07-01T00:06:00+09:00
 purpose: operations-skill
 status: active
 code_sync_required: false
@@ -109,4 +109,4 @@ Successfully applied 19 migrations
 
 - [Local setup](../LOCAL_SETUP.md)
 - [Docker MySQL Redis](../DOCKER_MYSQL_REDIS.md)
-- [Repeated Work Skills](README.md)
+- [Repeated Work Skills](Blog/posts/Projects/ZIP.ON/docs/operations/skills/README.md)

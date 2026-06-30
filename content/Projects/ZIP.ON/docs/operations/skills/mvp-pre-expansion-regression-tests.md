@@ -1,7 +1,7 @@
 ---
 title: mvp-pre-expansion-regression-tests
-created: 2026-06-26T05:00:07+09:00
-updated: 2026-06-30T05:00:06+09:00
+created: 2026-07-01T00:06:00+09:00
+updated: 2026-07-01T00:06:00+09:00
 purpose: operations-skill
 status: active
 code_sync_required: true
@@ -301,7 +301,7 @@ Do not delete the feature branch.
 
 ## Related Docs
 
-- [Repeated Work Skills](README.md)
+- [Repeated Work Skills](Blog/posts/Projects/ZIP.ON/docs/operations/skills/README.md)
 - [MVP rental risk diagnosis](/docs/product/MVP_SCOPE.md)
 - [Risk insight report strategy](/docs/frontend/SCREEN_ANALYSIS_POLICY.md)
 - [Risk signal rule dictionary](/docs/architecture/RISK_SCORING_POLICY.md)

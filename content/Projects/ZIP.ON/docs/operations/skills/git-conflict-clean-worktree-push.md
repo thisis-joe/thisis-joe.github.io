@@ -1,7 +1,7 @@
 ---
 title: git-conflict-clean-worktree-push
-created: 2026-06-26T05:00:07+09:00
-updated: 2026-06-30T05:00:06+09:00
+created: 2026-07-01T00:06:00+09:00
+updated: 2026-07-01T00:06:00+09:00
 purpose: operations-skill
 status: active
 code_sync_required: false
@@ -194,7 +194,7 @@ Use `--force-with-lease`, not plain `--force`.
 
 ## Related Docs
 
-- [Repeated Work Skills](README.md)
+- [Repeated Work Skills](Blog/posts/Projects/ZIP.ON/docs/operations/skills/README.md)
 - [Operations Docs](../README.md)
 - [Root AGENTS.md](../../../AGENTS.md)
 - [docs/AGENTS.md](../../AGENTS.md)

@@ -1,7 +1,7 @@
 ---
 title: README
-created: 2026-06-26T05:00:07+09:00
-updated: 2026-06-30T05:00:06+09:00
+created: 2026-07-01T00:06:00+09:00
+updated: 2026-07-01T00:06:00+09:00
 purpose: troubleshooting-index
 status: active
 code_sync_required: false

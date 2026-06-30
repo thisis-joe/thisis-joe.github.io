@@ -1,7 +1,7 @@
 ---
 title: CONCURRENCY_CONTROL
-created: 2026-06-26T05:00:07+09:00
-updated: 2026-06-30T05:00:06+09:00
+created: 2026-07-01T00:06:00+09:00
+updated: 2026-07-01T00:06:00+09:00
 purpose: community-current-architecture
 status: active
 code_sync_required: true
@@ -335,7 +335,7 @@ $env:PATH="$env:JAVA_HOME\bin;$env:PATH"
 
 ## 9. 관련 문서
 
-- [커뮤니티 게시판 백엔드 학습 문서](README.md)
+- [커뮤니티 게시판 백엔드 학습 문서](Blog/posts/Projects/ZIP.ON/docs/community/README.md)
 - [MySQL 개발환경과 Flyway migration](/docs/operations/DOCKER_MYSQL_REDIS.md)
 - [로컬 Docker 개발환경](/docs/operations/LOCAL_SETUP.md)
 - [기술 적용 타당성 검증 보고서](/docs/operations/review/TECH_APPLICABILITY_REVIEW.md)
