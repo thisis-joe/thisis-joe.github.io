@@ -28,14 +28,14 @@ jobs:
     steps:
       # main 브랜치의 Quartz 블로그 코드 가져오기
       - name: Checkout blog source
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           ref: main
           fetch-depth: 0
 
       # auto-sync 브랜치의 글 콘텐츠 가져오기
       - name: Checkout synced contents
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           ref: auto-sync
           path: synced-content
@@ -49,7 +49,7 @@ jobs:
 
       # Quartz는 Node 22 이상이 필요함
       - name: Setup Node
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: 22
 
